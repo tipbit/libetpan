@@ -35,17 +35,29 @@
 #	endif
 
 	/* use Windows Types */
+#   if !defined(uint8_t)
+		typedef UINT8 uint8_t;
+#   endif
 #	if !defined(ssize_t)
 		typedef SSIZE_T ssize_t;
 #	endif
 #	if !defined(uint16_t)
 		typedef UINT16 uint16_t;
 #	endif
+#	if !defined(int16_t)
+		typedef INT16 int16_t;
+#	endif
 #	if !defined(uint32_t)
 		typedef UINT32 uint32_t;
 #	endif
 #	if !defined(int32_t)
 		typedef INT32 int32_t;
+#	endif
+#	if !defined(uint64_t)
+		typedef UINT64 uint64_t;
+#	endif
+#	if !defined(int64_t)
+		typedef INT64 int64_t;
 #	endif
 #	if !defined(pid_t)
 		typedef DWORD pid_t;
