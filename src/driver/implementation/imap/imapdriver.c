@@ -1233,6 +1233,10 @@ static int imapdriver_login_sasl(mailsession * session,
 {
   int r;
 
+  if (0 == strcmp(auth_type, "OAUTH2")) {
+    return mailimap_oauth2_authenticate(get_imap_session(session), login, password);
+  }
+
   r = mailimap_authenticate(get_imap_session(session),
       auth_type, server_fqdn, local_ip_port, remote_ip_port,
       login, auth_name, password, realm);
