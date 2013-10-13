@@ -1778,7 +1778,8 @@ mailimap_msg_att_static_new(int att_type, struct mailimap_envelope * att_env,
     struct mailimap_body * att_bodystructure,
     struct mailimap_body * att_body,
     struct mailimap_msg_att_body_section * att_body_section,
-    uint32_t att_uid)
+    uint32_t att_uid,
+    uint64_t att_gm_msgid)
 {
   struct mailimap_msg_att_static * item;
 
