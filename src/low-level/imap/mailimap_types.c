@@ -1822,6 +1822,9 @@ mailimap_msg_att_static_new(int att_type, struct mailimap_envelope * att_env,
   case MAILIMAP_MSG_ATT_UID:
     item->att_data.att_uid = att_uid;
     break;
+  case MAILIMAP_MSG_ATT_GM_MSGID:
+    item->att_data.att_gm_msgid = att_gm_msgid;
+    break;
   }
 
   return item;
