@@ -1778,8 +1778,7 @@ mailimap_msg_att_static_new(int att_type, struct mailimap_envelope * att_env,
     struct mailimap_body * att_bodystructure,
     struct mailimap_body * att_body,
     struct mailimap_msg_att_body_section * att_body_section,
-    uint32_t att_uid,
-    uint64_t att_gm_msgid)
+    uint32_t att_uid)
 {
   struct mailimap_msg_att_static * item;
 
@@ -1821,9 +1820,6 @@ mailimap_msg_att_static_new(int att_type, struct mailimap_envelope * att_env,
     break;
   case MAILIMAP_MSG_ATT_UID:
     item->att_data.att_uid = att_uid;
-    break;
-  case MAILIMAP_MSG_ATT_GM_MSGID:
-    item->att_data.att_gm_msgid = att_gm_msgid;
     break;
   }
 
