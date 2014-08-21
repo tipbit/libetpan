@@ -118,7 +118,7 @@ int
 mailimap_uid_search_send(mailstream * fd, const char * charset,
 			 struct mailimap_search_key * key);
 
-  
+
 int mailimap_search_key_send(mailstream * fd,
                              struct mailimap_search_key * key);
   
@@ -198,6 +198,8 @@ int mailimap_oparenth_send(mailstream * fd);
 int mailimap_cparenth_send(mailstream * fd);
 
 int mailimap_mod_sequence_value_send(mailstream * fd, uint64_t modseq);
+  
+int mailimap_uint64_send(mailstream * fd, uint64_t number);
 
 int mailimap_number_send(mailstream * fd, uint32_t number);
 

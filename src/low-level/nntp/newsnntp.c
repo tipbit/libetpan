@@ -108,6 +108,11 @@ newsnntp * newsnntp_new(size_t progr_rate, progress_function * progr_fun)
     goto free_stream_buffer;
 
 	f->nntp_timeout = 0;
+	f->nntp_progress_fun = NULL;
+	f->nntp_progress_context = NULL;
+  
+  f->nntp_logger = NULL;
+  f->nntp_logger_context = NULL;
 
   return f;
 
@@ -924,7 +929,7 @@ int newsnntp_list_distribution(newsnntp * f, clist ** result)
   int r;
   char * response;
 
-  snprintf(command, NNTP_STRING_SIZE, "LIST DISTRIBUTION\r\n");
+  snprintf(command, NNTP_STRING_SIZE, "LIST DISTRIBUTIONS\r\n");
   r = send_command(f, command);
   if (r == -1)
     return NEWSNNTP_ERROR_STREAM;
@@ -1837,7 +1842,7 @@ static char * read_multiline(newsnntp * f, size_t size,
 {
   return mailstream_read_multiline(f->nntp_stream, size,
 				   f->nntp_stream_buffer, multiline_buffer,
-				   f->nntp_progr_rate, f->nntp_progr_fun, NULL, NULL);
+				   f->nntp_progr_rate, f->nntp_progr_fun, f->nntp_progress_fun, f->nntp_progress_context);
 }
 
 
@@ -2552,10 +2557,15 @@ static inline void nntp_logger(mailstream * s, int log_type,
   session->nntp_logger(session, log_type, str, size, session->nntp_logger_context);
 }
 
-LIBETPAN_EXPORT
 void newsnntp_set_logger(newsnntp * session, void (* logger)(newsnntp * session, int log_type,
     const char * str, size_t size, void * context), void * logger_context)
 {
   session->nntp_logger = logger;
   session->nntp_logger_context = logger_context;
+}
+
+void newsnntp_set_progress_callback(newsnntp * f, mailprogress_function * progr_fun, void * context)
+{
+	f->nntp_progress_fun = progr_fun;
+	f->nntp_progress_context = context;
 }

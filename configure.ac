@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 m4_define([maj_version], [1])
-m4_define([min_version], [2])
-m4_define([api_current], [17])
+m4_define([min_version], [5])
+m4_define([api_current], [18])
 m4_define([api_revision], [0])
 m4_define([api_compatibility], [17])
 dnl API version
@@ -228,7 +228,7 @@ if test "x$with_gnutls" != "xno"; then
   fi
   GNUTLSLIB=""
   AC_CHECK_HEADER(gnutls/gnutls.h, [
-   AC_CHECK_LIB(gnutls, gnutls_global_deinit, with_gnutls=yes, [GNUTLSLIB="-lgnutls -lgcrypt -lgpg-error -lz"])
+   AC_CHECK_LIB(gnutls, gnutls_global_deinit, with_gnutls=yes, [GNUTLSLIB="-lgnutls"])
   ])
   if test "x$with_gnutls" != "xyes"; then
    CPPFLAGS="$OCPPFLAGS"
@@ -386,7 +386,7 @@ dnl Look for db3 or superior with db_create call
   case "$DBVERS" in
     3)
     AC_MSG_RESULT([version 3.x or above])
-    for lib in db-5.1 db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4 db-3.2 db-3 db3 db; do
+    for lib in db-5.3 db-5.1 db-5.0 db-4.8 db-4.7 db-4.6 db-4.5 db-4.4 db-4.3 db-4.2 db-4.1 db-4.0 db-4 db4 db-3.2 db-3 db3 db; do
       if test "x$DBLINKED" = "x0"; then
 dnl        AC_CHECK_LIB($lib, db_create, [DBLIB="-l$lib"; DBLINKED=1], [])
 dnl installations of libdb4 function names are defined in db.h
@@ -440,8 +440,14 @@ AC_SUBST(DBLIB)
 
 dnl Threading support, if enabled
 AC_ARG_ENABLE(threads,  [  --disable-threads        do not include multithreading support using pthread],,[enable_threads=yes])
+AC_ARG_ENABLE(windows-threads,  [  --enable-windows-threads        include multithreading support using windows threads],[enable_windows_threads=yes],)
 
-if test "x$enable_threads" = "xyes"; then
+if test "x$enable_windows_threads" = "xyes"; then
+  AC_CHECK_HEADERS(pthread.h, [], [])
+  AC_DEFINE([LIBETPAN_REENTRANT], 1, [Define to include multithreading support])
+  LIBSUFFIX=
+  REENTRANT=1
+elif test "x$enable_threads" = "xyes"; then
   dnl Try to find a good CFLAGS/LDFLAGS for pthreads
   AC_CHECK_HEADERS(pthread.h, [], [AC_MSG_ERROR([pthread support required])])
   CPPFLAGS="$CPPFLAGS -D_REENTRANT"

@@ -144,6 +144,10 @@ static int mailstream_low_cfstream_get_fd(mailstream_low * s);
 static void mailstream_low_cfstream_cancel(mailstream_low * s);
 static carray * mailstream_low_cfstream_get_certificate_chain(mailstream_low * s);
 
+static int mailstream_low_cfstream_setup_idle(mailstream_low * s);
+static int mailstream_low_cfstream_unsetup_idle(mailstream_low * s);
+static int mailstream_low_cfstream_interrupt_idle(mailstream_low * s);
+
 static mailstream_low_driver local_mailstream_cfstream_driver = {
   /* mailstream_read */ mailstream_low_cfstream_read,
   /* mailstream_write */ mailstream_low_cfstream_write,
@@ -153,6 +157,9 @@ static mailstream_low_driver local_mailstream_cfstream_driver = {
   /* mailstream_cancel */ mailstream_low_cfstream_cancel,
   /* mailstream_get_cancel */ NULL,
   /* mailstream_get_certificate_chain */ mailstream_low_cfstream_get_certificate_chain,
+  /* mailstream_setup_idle */ mailstream_low_cfstream_setup_idle,
+  /* mailstream_unsetup_idle */ mailstream_low_cfstream_unsetup_idle,
+  /* mailstream_interrupt_idle */ mailstream_low_cfstream_interrupt_idle,
 };
 
 mailstream_low_driver * mailstream_cfstream_driver =
@@ -184,11 +191,13 @@ static void cfstream_data_free(struct mailstream_cfstream_data * cfstream_data)
 static void cfstream_data_close(struct mailstream_cfstream_data * cfstream_data)
 {
   if (cfstream_data->writeStream != NULL) {
+    CFWriteStreamSetClient(cfstream_data->writeStream, kCFStreamEventNone, NULL, NULL);
     CFWriteStreamClose(cfstream_data->writeStream);
     CFRelease(cfstream_data->writeStream);
     cfstream_data->writeStream = NULL;
   }
   if (cfstream_data->readStream != NULL) {
+    CFReadStreamSetClient(cfstream_data->readStream, kCFStreamEventNone, NULL, NULL);
     CFReadStreamClose(cfstream_data->readStream);
     CFRelease(cfstream_data->readStream);
     cfstream_data->readStream = NULL;
@@ -726,6 +735,17 @@ static int wait_runloop(mailstream_low * s, int wait_state)
     int r;
     int done;
     
+    if (cfstream_data->cancelled) {
+      error = WAIT_RUNLOOP_EXIT_CANCELLED;
+      break;
+    }
+    if (cfstream_data->state == STATE_WAIT_IDLE) {
+      if (cfstream_data->idleInterrupted) {
+        error = WAIT_RUNLOOP_EXIT_INTERRUPTED;
+        break;
+      }
+    }
+
     done = 0;
     switch (cfstream_data->state) {
       case STATE_OPEN_READ_DONE:
@@ -788,16 +808,6 @@ static int wait_runloop(mailstream_low * s, int wait_state)
     if (r == kCFRunLoopRunTimedOut) {
       error = WAIT_RUNLOOP_EXIT_TIMEOUT;
       break;
-    }
-    if (cfstream_data->cancelled) {
-      error = WAIT_RUNLOOP_EXIT_CANCELLED;
-      break;
-    }
-    if (cfstream_data->state == STATE_WAIT_IDLE) {
-      if (cfstream_data->idleInterrupted) {
-        error = WAIT_RUNLOOP_EXIT_INTERRUPTED;
-        break;
-      }
     }
   }
   
@@ -993,12 +1003,20 @@ int mailstream_cfstream_set_ssl_enabled(mailstream * s, int ssl_enabled)
       return -1;
     if (cfstream_data->readSSLResult < 0)
       return -1;
-    CFArrayRef certs = CFReadStreamCopyProperty(cfstream_data->readStream, kCFStreamPropertySSLPeerCertificates);
-    if (certs == NULL) {
+    
+    SecTrustRef secTrust = (SecTrustRef)CFReadStreamCopyProperty(cfstream_data->readStream, kCFStreamPropertySSLPeerTrust);
+    if (secTrust == NULL) {
+      // No trust, wait more.
+      continue;
+    }
+    
+    CFIndex count = SecTrustGetCertificateCount(secTrust);
+    CFRelease(secTrust);
+    
+    if (count == 0) {
       // No certificates, wait more.
       continue;
     }
-    CFRelease(certs);
     break;
   }
   
@@ -1095,48 +1113,53 @@ int mailstream_low_cfstream_wait_idle(mailstream_low * low, int max_idle_delay)
 static void idleInterruptedPerform(void *info)
 {
   struct mailstream_cfstream_data * cfstream_data;
-  mailstream * s;
+  mailstream_low * s;
   
   s = info;
-  //fprintf(stderr, "interrupt idle\n");
   
-  cfstream_data = (struct mailstream_cfstream_data *) s->low->data;
+  cfstream_data = (struct mailstream_cfstream_data *) s->data;
   cfstream_data->idleInterrupted = true;
 }
 #endif
 
-void mailstream_cfstream_setup_idle(mailstream * s)
+static int mailstream_low_cfstream_setup_idle(mailstream_low * s)
 {
 #if HAVE_CFNETWORK
   struct mailstream_cfstream_data * cfstream_data;
   
-  cfstream_data = (struct mailstream_cfstream_data *) s->low->data;
+  cfstream_data = (struct mailstream_cfstream_data *) s->data;
   cfstream_data->idleInterrupted = false;
   cfstream_data->idleInterruptedContext.info = s;
   cfstream_data->idleInterruptedContext.perform = idleInterruptedPerform;
   cfstream_data->idleInterruptedSource = CFRunLoopSourceCreate(NULL, 0, &cfstream_data->idleInterruptedContext);
+  return 0;
+#else
+  return -1;
 #endif
 }
 
-void mailstream_cfstream_unsetup_idle(mailstream * s)
+static int mailstream_low_cfstream_unsetup_idle(mailstream_low * s)
 {
 #if HAVE_CFNETWORK
   struct mailstream_cfstream_data * cfstream_data;
   
-  cfstream_data = (struct mailstream_cfstream_data *) s->low->data;
+  cfstream_data = (struct mailstream_cfstream_data *) s->data;
   if (cfstream_data->idleInterruptedSource != NULL) {
     CFRelease(cfstream_data->idleInterruptedSource);
     cfstream_data->idleInterruptedSource = NULL;
   }
+  return 0;
+#else
+  return -1;
 #endif
 }
 
-void mailstream_cfstream_interrupt_idle(mailstream * s)
+static int mailstream_low_cfstream_interrupt_idle(mailstream_low * s)
 {
 #if HAVE_CFNETWORK
   struct mailstream_cfstream_data * cfstream_data;
   
-  cfstream_data = (struct mailstream_cfstream_data *) s->low->data;
+  cfstream_data = (struct mailstream_cfstream_data *) s->data;
   
   pthread_mutex_lock(&cfstream_data->runloop_lock);
   
@@ -1148,6 +1171,9 @@ void mailstream_cfstream_interrupt_idle(mailstream * s)
   }
   
   pthread_mutex_unlock(&cfstream_data->runloop_lock);
+  return 0;
+#else
+  return -1;
 #endif
 }
 
@@ -1155,18 +1181,19 @@ static carray * mailstream_low_cfstream_get_certificate_chain(mailstream_low * s
 {
 #if HAVE_CFNETWORK
   struct mailstream_cfstream_data * cfstream_data;
-  CFArrayRef certs;
   unsigned int i;
   carray * result;
   
   cfstream_data = (struct mailstream_cfstream_data *) s->data;
-  certs = CFReadStreamCopyProperty(cfstream_data->readStream, kCFStreamPropertySSLPeerCertificates);
-  if (certs == NULL)
+  SecTrustRef secTrust = (SecTrustRef)CFReadStreamCopyProperty(cfstream_data->readStream, kCFStreamPropertySSLPeerTrust);
+  if (secTrust == NULL)
     return NULL;
   
+  CFIndex count = SecTrustGetCertificateCount(secTrust);
+  
   result = carray_new(4);
-  for(i = 0 ; i < CFArrayGetCount(certs) ; i ++) {
-    SecCertificateRef cert = (SecCertificateRef) CFArrayGetValueAtIndex(certs, i);
+  for(i = 0 ; i < count ; i ++) {
+    SecCertificateRef cert = (SecCertificateRef) SecTrustGetCertificateAtIndex(secTrust, i);
     CFDataRef data = SecCertificateCopyData(cert);
     CFIndex length = CFDataGetLength(data);
     const UInt8 * bytes = CFDataGetBytePtr(data);
@@ -1176,7 +1203,7 @@ static carray * mailstream_low_cfstream_get_certificate_chain(mailstream_low * s
     CFRelease(data);
   }
   
-  CFRelease(certs);
+  CFRelease(secTrust);
   
   return result;
 #else
