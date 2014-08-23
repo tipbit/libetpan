@@ -185,15 +185,6 @@
 		C682E29515B315EF00BE9DA7 /* newsfeed_item.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C2105335BC0059C3BA /* newsfeed_item.c */; };
 		C682E29615B315EF00BE9DA7 /* newsfeed_item_enclosure.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C4105335BC0059C3BA /* newsfeed_item_enclosure.c */; };
 		C682E29715B315EF00BE9DA7 /* newsfeed_private.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C6105335BC0059C3BA /* newsfeed_private.c */; };
-		C682E29815B315EF00BE9DA7 /* newsnntp.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA8F105335BC0059C3BA /* newsnntp.c */; };
-		C682E29915B315EF00BE9DA7 /* newsnntp_socket.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA91105335BC0059C3BA /* newsnntp_socket.c */; };
-		C682E29A15B315EF00BE9DA7 /* newsnntp_ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA93105335BC0059C3BA /* newsnntp_ssl.c */; };
-		C682E29B15B315EF00BE9DA7 /* nntpdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E932105335BC0059C3BA /* nntpdriver.c */; };
-		C682E29C15B315EF00BE9DA7 /* nntpdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E934105335BC0059C3BA /* nntpdriver_cached.c */; };
-		C682E29D15B315EF00BE9DA7 /* nntpdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E936105335BC0059C3BA /* nntpdriver_cached_message.c */; };
-		C682E29E15B315EF00BE9DA7 /* nntpdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E938105335BC0059C3BA /* nntpdriver_message.c */; };
-		C682E29F15B315EF00BE9DA7 /* nntpdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E93A105335BC0059C3BA /* nntpdriver_tools.c */; };
-		C682E2A015B315EF00BE9DA7 /* nntpstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E93D105335BC0059C3BA /* nntpstorage.c */; };
 		C682E2A115B315EF00BE9DA7 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C9105335BC0059C3BA /* parser.c */; };
 		C682E2A215B315EF00BE9DA7 /* parser_atom03.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9CB105335BC0059C3BA /* parser_atom03.c */; };
 		C682E2A315B315EF00BE9DA7 /* parser_atom10.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9CD105335BC0059C3BA /* parser_atom10.c */; };
@@ -345,15 +336,6 @@
 		C69AB2A41054704000F32FBD /* newsfeed_item.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C2105335BC0059C3BA /* newsfeed_item.c */; };
 		C69AB2A61054704000F32FBD /* newsfeed_item_enclosure.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C4105335BC0059C3BA /* newsfeed_item_enclosure.c */; };
 		C69AB2A81054704000F32FBD /* newsfeed_private.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C6105335BC0059C3BA /* newsfeed_private.c */; };
-		C69AB2AB1054704000F32FBD /* newsnntp.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA8F105335BC0059C3BA /* newsnntp.c */; };
-		C69AB2AD1054704000F32FBD /* newsnntp_socket.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA91105335BC0059C3BA /* newsnntp_socket.c */; };
-		C69AB2AF1054704000F32FBD /* newsnntp_ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA93105335BC0059C3BA /* newsnntp_ssl.c */; };
-		C69AB2B21054704000F32FBD /* nntpdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E932105335BC0059C3BA /* nntpdriver.c */; };
-		C69AB2B41054704000F32FBD /* nntpdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E934105335BC0059C3BA /* nntpdriver_cached.c */; };
-		C69AB2B61054704000F32FBD /* nntpdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E936105335BC0059C3BA /* nntpdriver_cached_message.c */; };
-		C69AB2B81054704000F32FBD /* nntpdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E938105335BC0059C3BA /* nntpdriver_message.c */; };
-		C69AB2BA1054704000F32FBD /* nntpdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E93A105335BC0059C3BA /* nntpdriver_tools.c */; };
-		C69AB2BD1054704000F32FBD /* nntpstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E93D105335BC0059C3BA /* nntpstorage.c */; };
 		C69AB2BF1054704000F32FBD /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9C9105335BC0059C3BA /* parser.c */; };
 		C69AB2C11054704000F32FBD /* parser_atom03.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9CB105335BC0059C3BA /* parser_atom03.c */; };
 		C69AB2C31054704000F32FBD /* parser_atom10.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9CD105335BC0059C3BA /* parser_atom10.c */; };
@@ -445,12 +427,6 @@
 		C6F9EBB2105335BD0059C3BA /* mhdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E918105335BC0059C3BA /* mhdriver_tools.c */; };
 		C6F9EBB5105335BD0059C3BA /* mhstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E91B105335BC0059C3BA /* mhstorage.c */; };
 		C6F9EBBC105335BD0059C3BA /* mime_message_driver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E924105335BC0059C3BA /* mime_message_driver.c */; };
-		C6F9EBC8105335BD0059C3BA /* nntpdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E932105335BC0059C3BA /* nntpdriver.c */; };
-		C6F9EBCA105335BD0059C3BA /* nntpdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E934105335BC0059C3BA /* nntpdriver_cached.c */; };
-		C6F9EBCC105335BD0059C3BA /* nntpdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E936105335BC0059C3BA /* nntpdriver_cached_message.c */; };
-		C6F9EBCE105335BD0059C3BA /* nntpdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E938105335BC0059C3BA /* nntpdriver_message.c */; };
-		C6F9EBD0105335BD0059C3BA /* nntpdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E93A105335BC0059C3BA /* nntpdriver_tools.c */; };
-		C6F9EBD3105335BD0059C3BA /* nntpstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E93D105335BC0059C3BA /* nntpstorage.c */; };
 		C6F9EBDF105335BD0059C3BA /* pop3driver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E94B105335BC0059C3BA /* pop3driver.c */; };
 		C6F9EBE1105335BD0059C3BA /* pop3driver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E94D105335BC0059C3BA /* pop3driver_cached.c */; };
 		C6F9EBE3105335BD0059C3BA /* pop3driver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E94F105335BC0059C3BA /* pop3driver_cached_message.c */; };
@@ -530,9 +506,6 @@
 		C6F9ECFB105335BD0059C3BA /* mailmime_write_file.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA7C105335BC0059C3BA /* mailmime_write_file.c */; };
 		C6F9ECFD105335BD0059C3BA /* mailmime_write_generic.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA7E105335BC0059C3BA /* mailmime_write_generic.c */; };
 		C6F9ECFF105335BD0059C3BA /* mailmime_write_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA80105335BC0059C3BA /* mailmime_write_mem.c */; };
-		C6F9ED0C105335BD0059C3BA /* newsnntp.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA8F105335BC0059C3BA /* newsnntp.c */; };
-		C6F9ED0E105335BD0059C3BA /* newsnntp_socket.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA91105335BC0059C3BA /* newsnntp_socket.c */; };
-		C6F9ED10105335BD0059C3BA /* newsnntp_ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA93105335BC0059C3BA /* newsnntp_ssl.c */; };
 		C6F9ED18105335BD0059C3BA /* mailpop3.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA9D105335BC0059C3BA /* mailpop3.c */; };
 		C6F9ED1A105335BD0059C3BA /* mailpop3_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA9F105335BC0059C3BA /* mailpop3_helper.c */; };
 		C6F9ED1C105335BD0059C3BA /* mailpop3_socket.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EAA1105335BC0059C3BA /* mailpop3_socket.c */; };
@@ -761,19 +734,6 @@
 		C6F9E91C105335BC0059C3BA /* mhstorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mhstorage.h; sourceTree = "<group>"; };
 		C6F9E924105335BC0059C3BA /* mime_message_driver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mime_message_driver.c; sourceTree = "<group>"; };
 		C6F9E925105335BC0059C3BA /* mime_message_driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mime_message_driver.h; sourceTree = "<group>"; };
-		C6F9E932105335BC0059C3BA /* nntpdriver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nntpdriver.c; sourceTree = "<group>"; };
-		C6F9E933105335BC0059C3BA /* nntpdriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpdriver.h; sourceTree = "<group>"; };
-		C6F9E934105335BC0059C3BA /* nntpdriver_cached.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nntpdriver_cached.c; sourceTree = "<group>"; };
-		C6F9E935105335BC0059C3BA /* nntpdriver_cached.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpdriver_cached.h; sourceTree = "<group>"; };
-		C6F9E936105335BC0059C3BA /* nntpdriver_cached_message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nntpdriver_cached_message.c; sourceTree = "<group>"; };
-		C6F9E937105335BC0059C3BA /* nntpdriver_cached_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpdriver_cached_message.h; sourceTree = "<group>"; };
-		C6F9E938105335BC0059C3BA /* nntpdriver_message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nntpdriver_message.c; sourceTree = "<group>"; };
-		C6F9E939105335BC0059C3BA /* nntpdriver_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpdriver_message.h; sourceTree = "<group>"; };
-		C6F9E93A105335BC0059C3BA /* nntpdriver_tools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nntpdriver_tools.c; sourceTree = "<group>"; };
-		C6F9E93B105335BC0059C3BA /* nntpdriver_tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpdriver_tools.h; sourceTree = "<group>"; };
-		C6F9E93C105335BC0059C3BA /* nntpdriver_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpdriver_types.h; sourceTree = "<group>"; };
-		C6F9E93D105335BC0059C3BA /* nntpstorage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = nntpstorage.c; sourceTree = "<group>"; };
-		C6F9E93E105335BC0059C3BA /* nntpstorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nntpstorage.h; sourceTree = "<group>"; };
 		C6F9E94B105335BC0059C3BA /* pop3driver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pop3driver.c; sourceTree = "<group>"; };
 		C6F9E94C105335BC0059C3BA /* pop3driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pop3driver.h; sourceTree = "<group>"; };
 		C6F9E94D105335BC0059C3BA /* pop3driver_cached.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pop3driver_cached.c; sourceTree = "<group>"; };
@@ -943,13 +903,6 @@
 		C6F9EA7F105335BC0059C3BA /* mailmime_write_generic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailmime_write_generic.h; sourceTree = "<group>"; };
 		C6F9EA80105335BC0059C3BA /* mailmime_write_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailmime_write_mem.c; sourceTree = "<group>"; };
 		C6F9EA81105335BC0059C3BA /* mailmime_write_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailmime_write_mem.h; sourceTree = "<group>"; };
-		C6F9EA8F105335BC0059C3BA /* newsnntp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = newsnntp.c; sourceTree = "<group>"; };
-		C6F9EA90105335BC0059C3BA /* newsnntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsnntp.h; sourceTree = "<group>"; };
-		C6F9EA91105335BC0059C3BA /* newsnntp_socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = newsnntp_socket.c; sourceTree = "<group>"; };
-		C6F9EA92105335BC0059C3BA /* newsnntp_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsnntp_socket.h; sourceTree = "<group>"; };
-		C6F9EA93105335BC0059C3BA /* newsnntp_ssl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = newsnntp_ssl.c; sourceTree = "<group>"; };
-		C6F9EA94105335BC0059C3BA /* newsnntp_ssl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsnntp_ssl.h; sourceTree = "<group>"; };
-		C6F9EA95105335BC0059C3BA /* newsnntp_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newsnntp_types.h; sourceTree = "<group>"; };
 		C6F9EA9D105335BC0059C3BA /* mailpop3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailpop3.c; sourceTree = "<group>"; };
 		C6F9EA9E105335BC0059C3BA /* mailpop3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailpop3.h; sourceTree = "<group>"; };
 		C6F9EA9F105335BC0059C3BA /* mailpop3_helper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailpop3_helper.c; sourceTree = "<group>"; };
@@ -1156,7 +1109,6 @@
 				C6F9E8EB105335BC0059C3BA /* mbox */,
 				C6F9E904105335BC0059C3BA /* mh */,
 				C6F9E91D105335BC0059C3BA /* mime-message */,
-				C6F9E926105335BC0059C3BA /* nntp */,
 				C6F9E93F105335BC0059C3BA /* pop3 */,
 			);
 			path = implementation;
@@ -1298,26 +1250,6 @@
 			path = "mime-message";
 			sourceTree = "<group>";
 		};
-		C6F9E926105335BC0059C3BA /* nntp */ = {
-			isa = PBXGroup;
-			children = (
-				C6F9E932105335BC0059C3BA /* nntpdriver.c */,
-				C6F9E933105335BC0059C3BA /* nntpdriver.h */,
-				C6F9E934105335BC0059C3BA /* nntpdriver_cached.c */,
-				C6F9E935105335BC0059C3BA /* nntpdriver_cached.h */,
-				C6F9E936105335BC0059C3BA /* nntpdriver_cached_message.c */,
-				C6F9E937105335BC0059C3BA /* nntpdriver_cached_message.h */,
-				C6F9E938105335BC0059C3BA /* nntpdriver_message.c */,
-				C6F9E939105335BC0059C3BA /* nntpdriver_message.h */,
-				C6F9E93A105335BC0059C3BA /* nntpdriver_tools.c */,
-				C6F9E93B105335BC0059C3BA /* nntpdriver_tools.h */,
-				C6F9E93C105335BC0059C3BA /* nntpdriver_types.h */,
-				C6F9E93D105335BC0059C3BA /* nntpstorage.c */,
-				C6F9E93E105335BC0059C3BA /* nntpstorage.h */,
-			);
-			path = nntp;
-			sourceTree = "<group>";
-		};
 		C6F9E93F105335BC0059C3BA /* pop3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,7 +1344,6 @@
 				C6F9EA4A105335BC0059C3BA /* mbox */,
 				C6F9EA5A105335BC0059C3BA /* mh */,
 				C6F9EA63105335BC0059C3BA /* mime */,
-				C6F9EA86105335BC0059C3BA /* nntp */,
 				C6F9EA96105335BC0059C3BA /* pop3 */,
 				C6F9EAA9105335BC0059C3BA /* smtp */,
 			);
@@ -1631,20 +1562,6 @@
 				C6F9EA81105335BC0059C3BA /* mailmime_write_mem.h */,
 			);
 			path = mime;
-			sourceTree = "<group>";
-		};
-		C6F9EA86105335BC0059C3BA /* nntp */ = {
-			isa = PBXGroup;
-			children = (
-				C6F9EA8F105335BC0059C3BA /* newsnntp.c */,
-				C6F9EA90105335BC0059C3BA /* newsnntp.h */,
-				C6F9EA91105335BC0059C3BA /* newsnntp_socket.c */,
-				C6F9EA92105335BC0059C3BA /* newsnntp_socket.h */,
-				C6F9EA93105335BC0059C3BA /* newsnntp_ssl.c */,
-				C6F9EA94105335BC0059C3BA /* newsnntp_ssl.h */,
-				C6F9EA95105335BC0059C3BA /* newsnntp_types.h */,
-			);
-			path = nntp;
 			sourceTree = "<group>";
 		};
 		C6F9EA96105335BC0059C3BA /* pop3 */ = {
@@ -1950,12 +1867,6 @@
 				C6F9EBB2105335BD0059C3BA /* mhdriver_tools.c in Sources */,
 				C6F9EBB5105335BD0059C3BA /* mhstorage.c in Sources */,
 				C6F9EBBC105335BD0059C3BA /* mime_message_driver.c in Sources */,
-				C6F9EBC8105335BD0059C3BA /* nntpdriver.c in Sources */,
-				C6F9EBCA105335BD0059C3BA /* nntpdriver_cached.c in Sources */,
-				C6F9EBCC105335BD0059C3BA /* nntpdriver_cached_message.c in Sources */,
-				C6F9EBCE105335BD0059C3BA /* nntpdriver_message.c in Sources */,
-				C6F9EBD0105335BD0059C3BA /* nntpdriver_tools.c in Sources */,
-				C6F9EBD3105335BD0059C3BA /* nntpstorage.c in Sources */,
 				C6F9EBDF105335BD0059C3BA /* pop3driver.c in Sources */,
 				C6F9EBE1105335BD0059C3BA /* pop3driver_cached.c in Sources */,
 				C6F9EBE3105335BD0059C3BA /* pop3driver_cached_message.c in Sources */,
@@ -2036,9 +1947,6 @@
 				C6F9ECFB105335BD0059C3BA /* mailmime_write_file.c in Sources */,
 				C6F9ECFD105335BD0059C3BA /* mailmime_write_generic.c in Sources */,
 				C6F9ECFF105335BD0059C3BA /* mailmime_write_mem.c in Sources */,
-				C6F9ED0C105335BD0059C3BA /* newsnntp.c in Sources */,
-				C6F9ED0E105335BD0059C3BA /* newsnntp_socket.c in Sources */,
-				C6F9ED10105335BD0059C3BA /* newsnntp_ssl.c in Sources */,
 				C6F9ED18105335BD0059C3BA /* mailpop3.c in Sources */,
 				C6F9ED1A105335BD0059C3BA /* mailpop3_helper.c in Sources */,
 				C6F9ED1C105335BD0059C3BA /* mailpop3_socket.c in Sources */,
@@ -2207,15 +2115,6 @@
 				C682E29515B315EF00BE9DA7 /* newsfeed_item.c in Sources */,
 				C682E29615B315EF00BE9DA7 /* newsfeed_item_enclosure.c in Sources */,
 				C682E29715B315EF00BE9DA7 /* newsfeed_private.c in Sources */,
-				C682E29815B315EF00BE9DA7 /* newsnntp.c in Sources */,
-				C682E29915B315EF00BE9DA7 /* newsnntp_socket.c in Sources */,
-				C682E29A15B315EF00BE9DA7 /* newsnntp_ssl.c in Sources */,
-				C682E29B15B315EF00BE9DA7 /* nntpdriver.c in Sources */,
-				C682E29C15B315EF00BE9DA7 /* nntpdriver_cached.c in Sources */,
-				C682E29D15B315EF00BE9DA7 /* nntpdriver_cached_message.c in Sources */,
-				C682E29E15B315EF00BE9DA7 /* nntpdriver_message.c in Sources */,
-				C682E29F15B315EF00BE9DA7 /* nntpdriver_tools.c in Sources */,
-				C682E2A015B315EF00BE9DA7 /* nntpstorage.c in Sources */,
 				C682E2A115B315EF00BE9DA7 /* parser.c in Sources */,
 				C682E2A215B315EF00BE9DA7 /* parser_atom03.c in Sources */,
 				C682E2A315B315EF00BE9DA7 /* parser_atom10.c in Sources */,
@@ -2391,15 +2290,6 @@
 				C69AB2A41054704000F32FBD /* newsfeed_item.c in Sources */,
 				C69AB2A61054704000F32FBD /* newsfeed_item_enclosure.c in Sources */,
 				C69AB2A81054704000F32FBD /* newsfeed_private.c in Sources */,
-				C69AB2AB1054704000F32FBD /* newsnntp.c in Sources */,
-				C69AB2AD1054704000F32FBD /* newsnntp_socket.c in Sources */,
-				C69AB2AF1054704000F32FBD /* newsnntp_ssl.c in Sources */,
-				C69AB2B21054704000F32FBD /* nntpdriver.c in Sources */,
-				C69AB2B41054704000F32FBD /* nntpdriver_cached.c in Sources */,
-				C69AB2B61054704000F32FBD /* nntpdriver_cached_message.c in Sources */,
-				C69AB2B81054704000F32FBD /* nntpdriver_message.c in Sources */,
-				C69AB2BA1054704000F32FBD /* nntpdriver_tools.c in Sources */,
-				C69AB2BD1054704000F32FBD /* nntpstorage.c in Sources */,
 				C69AB2BF1054704000F32FBD /* parser.c in Sources */,
 				C69AB2C11054704000F32FBD /* parser_atom03.c in Sources */,
 				C69AB2C31054704000F32FBD /* parser_atom10.c in Sources */,
