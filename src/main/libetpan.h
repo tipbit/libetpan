@@ -61,13 +61,6 @@ extern "C" {
 #include <libetpan/mboxdriver_cached_message.h>
 #include <libetpan/mboxstorage.h>
 
-/* MH driver */
-#include <libetpan/mhdriver.h>
-#include <libetpan/mhdriver_message.h>
-#include <libetpan/mhdriver_cached.h>
-#include <libetpan/mhdriver_cached_message.h>
-#include <libetpan/mhstorage.h>
-
 /* IMAP4rev1 driver */
 #include <libetpan/imapdriver.h>
 #include <libetpan/imapdriver_message.h>
