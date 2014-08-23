@@ -82,13 +82,6 @@ extern "C" {
 #include <libetpan/pop3driver_cached_message.h>
 #include <libetpan/pop3storage.h>
 
-/* maildir driver */
-#include <libetpan/maildirdriver.h>
-#include <libetpan/maildirdriver_message.h>
-#include <libetpan/maildirdriver_cached.h>
-#include <libetpan/maildirdriver_cached_message.h>
-#include <libetpan/maildirstorage.h>
-
 /* db driver */
 #include <libetpan/dbdriver.h>
 #include <libetpan/dbdriver_message.h>
