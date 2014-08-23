@@ -68,13 +68,6 @@ extern "C" {
 #include <libetpan/imapdriver_cached_message.h>
 #include <libetpan/imapstorage.h>
 
-/* POP3 driver */
-#include <libetpan/pop3driver.h>
-#include <libetpan/pop3driver_message.h>
-#include <libetpan/pop3driver_cached.h>
-#include <libetpan/pop3driver_cached_message.h>
-#include <libetpan/pop3storage.h>
-
 /* db driver */
 #include <libetpan/dbdriver.h>
 #include <libetpan/dbdriver_message.h>
