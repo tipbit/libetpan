@@ -82,9 +82,6 @@ extern "C" {
 #include <libetpan/pop3driver_cached_message.h>
 #include <libetpan/pop3storage.h>
 
-/* Hotmail */
-#include <libetpan/hotmailstorage.h>
-
 /* maildir driver */
 #include <libetpan/maildirdriver.h>
 #include <libetpan/maildirdriver_message.h>

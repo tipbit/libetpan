@@ -84,7 +84,6 @@
 		C682E23015B315EF00BE9DA7 /* feeddriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A4105335BC0059C3BA /* feeddriver_message.c */; };
 		C682E23115B315EF00BE9DA7 /* feedstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A7105335BC0059C3BA /* feedstorage.c */; };
 		C682E23215B315EF00BE9DA7 /* generic_cache.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E989105335BC0059C3BA /* generic_cache.c */; };
-		C682E23315B315EF00BE9DA7 /* hotmailstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8B0105335BC0059C3BA /* hotmailstorage.c */; };
 		C682E23415B315EF00BE9DA7 /* idle.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9FE105335BC0059C3BA /* idle.c */; };
 		C682E23515B315EF00BE9DA7 /* imapdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8BE105335BC0059C3BA /* imapdriver.c */; };
 		C682E23615B315EF00BE9DA7 /* imapdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8C0105335BC0059C3BA /* imapdriver_cached.c */; };
@@ -235,7 +234,6 @@
 		C69AB1C11054704000F32FBD /* feeddriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A4105335BC0059C3BA /* feeddriver_message.c */; };
 		C69AB1C41054704000F32FBD /* feedstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A7105335BC0059C3BA /* feedstorage.c */; };
 		C69AB1C61054704000F32FBD /* generic_cache.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E989105335BC0059C3BA /* generic_cache.c */; };
-		C69AB1CA1054704000F32FBD /* hotmailstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8B0105335BC0059C3BA /* hotmailstorage.c */; };
 		C69AB1CC1054704000F32FBD /* idle.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E9FE105335BC0059C3BA /* idle.c */; };
 		C69AB1CE1054704000F32FBD /* imapdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8BE105335BC0059C3BA /* imapdriver.c */; };
 		C69AB1D01054704000F32FBD /* imapdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8C0105335BC0059C3BA /* imapdriver_cached.c */; };
@@ -401,7 +399,6 @@
 		C6F9EB46105335BD0059C3BA /* feeddriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A2105335BC0059C3BA /* feeddriver.c */; };
 		C6F9EB48105335BD0059C3BA /* feeddriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A4105335BC0059C3BA /* feeddriver_message.c */; };
 		C6F9EB4B105335BD0059C3BA /* feedstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8A7105335BC0059C3BA /* feedstorage.c */; };
-		C6F9EB52105335BD0059C3BA /* hotmailstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8B0105335BC0059C3BA /* hotmailstorage.c */; };
 		C6F9EB5E105335BD0059C3BA /* imapdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8BE105335BC0059C3BA /* imapdriver.c */; };
 		C6F9EB60105335BD0059C3BA /* imapdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8C0105335BC0059C3BA /* imapdriver_cached.c */; };
 		C6F9EB62105335BD0059C3BA /* imapdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8C2105335BC0059C3BA /* imapdriver_cached_message.c */; };
@@ -677,8 +674,6 @@
 		C6F9E8A6105335BC0059C3BA /* feeddriver_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = feeddriver_types.h; sourceTree = "<group>"; };
 		C6F9E8A7105335BC0059C3BA /* feedstorage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = feedstorage.c; sourceTree = "<group>"; };
 		C6F9E8A8105335BC0059C3BA /* feedstorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = feedstorage.h; sourceTree = "<group>"; };
-		C6F9E8B0105335BC0059C3BA /* hotmailstorage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hotmailstorage.c; sourceTree = "<group>"; };
-		C6F9E8B1105335BC0059C3BA /* hotmailstorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hotmailstorage.h; sourceTree = "<group>"; };
 		C6F9E8BE105335BC0059C3BA /* imapdriver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = imapdriver.c; sourceTree = "<group>"; };
 		C6F9E8BF105335BC0059C3BA /* imapdriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imapdriver.h; sourceTree = "<group>"; };
 		C6F9E8C0105335BC0059C3BA /* imapdriver_cached.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = imapdriver_cached.c; sourceTree = "<group>"; };
@@ -1103,7 +1098,6 @@
 				C6F9E884105335BC0059C3BA /* data-message */,
 				C6F9E88D105335BC0059C3BA /* db */,
 				C6F9E89D105335BC0059C3BA /* feed */,
-				C6F9E8AC105335BC0059C3BA /* hotmail */,
 				C6F9E8B5105335BC0059C3BA /* imap */,
 				C6F9E8CF105335BC0059C3BA /* maildir */,
 				C6F9E8EB105335BC0059C3BA /* mbox */,
@@ -1149,15 +1143,6 @@
 				C6F9E8A8105335BC0059C3BA /* feedstorage.h */,
 			);
 			path = feed;
-			sourceTree = "<group>";
-		};
-		C6F9E8AC105335BC0059C3BA /* hotmail */ = {
-			isa = PBXGroup;
-			children = (
-				C6F9E8B0105335BC0059C3BA /* hotmailstorage.c */,
-				C6F9E8B1105335BC0059C3BA /* hotmailstorage.h */,
-			);
-			path = hotmail;
 			sourceTree = "<group>";
 		};
 		C6F9E8B5105335BC0059C3BA /* imap */ = {
@@ -1841,7 +1826,6 @@
 				C6F9EB46105335BD0059C3BA /* feeddriver.c in Sources */,
 				C6F9EB48105335BD0059C3BA /* feeddriver_message.c in Sources */,
 				C6F9EB4B105335BD0059C3BA /* feedstorage.c in Sources */,
-				C6F9EB52105335BD0059C3BA /* hotmailstorage.c in Sources */,
 				C6F9EB5E105335BD0059C3BA /* imapdriver.c in Sources */,
 				C6F9EB60105335BD0059C3BA /* imapdriver_cached.c in Sources */,
 				C6F9EB62105335BD0059C3BA /* imapdriver_cached_message.c in Sources */,
@@ -2013,7 +1997,6 @@
 				C682E23015B315EF00BE9DA7 /* feeddriver_message.c in Sources */,
 				C682E23115B315EF00BE9DA7 /* feedstorage.c in Sources */,
 				C682E23215B315EF00BE9DA7 /* generic_cache.c in Sources */,
-				C682E23315B315EF00BE9DA7 /* hotmailstorage.c in Sources */,
 				C682E23415B315EF00BE9DA7 /* idle.c in Sources */,
 				C682E23515B315EF00BE9DA7 /* imapdriver.c in Sources */,
 				C682E23615B315EF00BE9DA7 /* imapdriver_cached.c in Sources */,
@@ -2188,7 +2171,6 @@
 				C69AB1C11054704000F32FBD /* feeddriver_message.c in Sources */,
 				C69AB1C41054704000F32FBD /* feedstorage.c in Sources */,
 				C69AB1C61054704000F32FBD /* generic_cache.c in Sources */,
-				C69AB1CA1054704000F32FBD /* hotmailstorage.c in Sources */,
 				C69AB1CC1054704000F32FBD /* idle.c in Sources */,
 				C69AB1CE1054704000F32FBD /* imapdriver.c in Sources */,
 				C69AB1D01054704000F32FBD /* imapdriver_cached.c in Sources */,
