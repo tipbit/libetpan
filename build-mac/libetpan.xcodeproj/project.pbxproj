@@ -118,9 +118,6 @@
 		C682E25A15B315EF00BE9DA7 /* mailimf_write_generic.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA35105335BC0059C3BA /* mailimf_write_generic.c */; };
 		C682E25B15B315EF00BE9DA7 /* mailimf_write_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA37105335BC0059C3BA /* mailimf_write_mem.c */; };
 		C682E25C15B315EF00BE9DA7 /* maillock.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E860105335BC0059C3BA /* maillock.c */; };
-		C682E25D15B315EF00BE9DA7 /* mailmbox.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA50105335BC0059C3BA /* mailmbox.c */; };
-		C682E25E15B315EF00BE9DA7 /* mailmbox_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA52105335BC0059C3BA /* mailmbox_parse.c */; };
-		C682E25F15B315EF00BE9DA7 /* mailmbox_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA54105335BC0059C3BA /* mailmbox_types.c */; };
 		C682E26015B315EF00BE9DA7 /* mailmessage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E970105335BC0059C3BA /* mailmessage.c */; };
 		C682E26115B315EF00BE9DA7 /* mailmessage_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E972105335BC0059C3BA /* mailmessage_tools.c */; };
 		C682E26215B315EF00BE9DA7 /* mailmessage_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E974105335BC0059C3BA /* mailmessage_types.c */; };
@@ -153,12 +150,6 @@
 		C682E28215B315EF00BE9DA7 /* mailstream_ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E871105335BC0059C3BA /* mailstream_ssl.c */; };
 		C682E28315B315EF00BE9DA7 /* mailthread.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E98E105335BC0059C3BA /* mailthread.c */; };
 		C682E28415B315EF00BE9DA7 /* mailthread_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E990105335BC0059C3BA /* mailthread_types.c */; };
-		C682E28515B315EF00BE9DA7 /* mboxdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8F7105335BC0059C3BA /* mboxdriver.c */; };
-		C682E28615B315EF00BE9DA7 /* mboxdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8F9105335BC0059C3BA /* mboxdriver_cached.c */; };
-		C682E28715B315EF00BE9DA7 /* mboxdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FB105335BC0059C3BA /* mboxdriver_cached_message.c */; };
-		C682E28815B315EF00BE9DA7 /* mboxdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FD105335BC0059C3BA /* mboxdriver_message.c */; };
-		C682E28915B315EF00BE9DA7 /* mboxdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FF105335BC0059C3BA /* mboxdriver_tools.c */; };
-		C682E28A15B315EF00BE9DA7 /* mboxstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E902105335BC0059C3BA /* mboxstorage.c */; };
 		C682E28B15B315EF00BE9DA7 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E878105335BC0059C3BA /* md5.c */; };
 		C682E29215B315EF00BE9DA7 /* mime_message_driver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E924105335BC0059C3BA /* mime_message_driver.c */; };
 		C682E29315B315EF00BE9DA7 /* mmapstring.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E87B105335BC0059C3BA /* mmapstring.c */; };
@@ -244,9 +235,6 @@
 		C69AB2211054704000F32FBD /* mailimf_write_generic.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA35105335BC0059C3BA /* mailimf_write_generic.c */; };
 		C69AB2231054704000F32FBD /* mailimf_write_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA37105335BC0059C3BA /* mailimf_write_mem.c */; };
 		C69AB2251054704000F32FBD /* maillock.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E860105335BC0059C3BA /* maillock.c */; };
-		C69AB2271054704000F32FBD /* mailmbox.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA50105335BC0059C3BA /* mailmbox.c */; };
-		C69AB2291054704000F32FBD /* mailmbox_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA52105335BC0059C3BA /* mailmbox_parse.c */; };
-		C69AB22B1054704000F32FBD /* mailmbox_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA54105335BC0059C3BA /* mailmbox_types.c */; };
 		C69AB22D1054704000F32FBD /* mailmessage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E970105335BC0059C3BA /* mailmessage.c */; };
 		C69AB22F1054704000F32FBD /* mailmessage_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E972105335BC0059C3BA /* mailmessage_tools.c */; };
 		C69AB2311054704000F32FBD /* mailmessage_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E974105335BC0059C3BA /* mailmessage_types.c */; };
@@ -279,12 +267,6 @@
 		C69AB2781054704000F32FBD /* mailstream_ssl.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E871105335BC0059C3BA /* mailstream_ssl.c */; };
 		C69AB27C1054704000F32FBD /* mailthread.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E98E105335BC0059C3BA /* mailthread.c */; };
 		C69AB27E1054704000F32FBD /* mailthread_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E990105335BC0059C3BA /* mailthread_types.c */; };
-		C69AB2801054704000F32FBD /* mboxdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8F7105335BC0059C3BA /* mboxdriver.c */; };
-		C69AB2821054704000F32FBD /* mboxdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8F9105335BC0059C3BA /* mboxdriver_cached.c */; };
-		C69AB2841054704000F32FBD /* mboxdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FB105335BC0059C3BA /* mboxdriver_cached_message.c */; };
-		C69AB2861054704000F32FBD /* mboxdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FD105335BC0059C3BA /* mboxdriver_message.c */; };
-		C69AB2881054704000F32FBD /* mboxdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FF105335BC0059C3BA /* mboxdriver_tools.c */; };
-		C69AB28B1054704000F32FBD /* mboxstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E902105335BC0059C3BA /* mboxstorage.c */; };
 		C69AB28D1054704000F32FBD /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E878105335BC0059C3BA /* md5.c */; };
 		C69AB29D1054704000F32FBD /* mime_message_driver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E924105335BC0059C3BA /* mime_message_driver.c */; };
 		C69AB29F1054704000F32FBD /* mmapstring.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E87B105335BC0059C3BA /* mmapstring.c */; };
@@ -357,12 +339,6 @@
 		C6F9EB64105335BD0059C3BA /* imapdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8C4105335BC0059C3BA /* imapdriver_message.c */; };
 		C6F9EB66105335BD0059C3BA /* imapdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8C6105335BC0059C3BA /* imapdriver_tools.c */; };
 		C6F9EB6A105335BD0059C3BA /* imapstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8CA105335BC0059C3BA /* imapstorage.c */; };
-		C6F9EB93105335BD0059C3BA /* mboxdriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8F7105335BC0059C3BA /* mboxdriver.c */; };
-		C6F9EB95105335BD0059C3BA /* mboxdriver_cached.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8F9105335BC0059C3BA /* mboxdriver_cached.c */; };
-		C6F9EB97105335BD0059C3BA /* mboxdriver_cached_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FB105335BC0059C3BA /* mboxdriver_cached_message.c */; };
-		C6F9EB99105335BD0059C3BA /* mboxdriver_message.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FD105335BC0059C3BA /* mboxdriver_message.c */; };
-		C6F9EB9B105335BD0059C3BA /* mboxdriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E8FF105335BC0059C3BA /* mboxdriver_tools.c */; };
-		C6F9EB9E105335BD0059C3BA /* mboxstorage.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E902105335BC0059C3BA /* mboxstorage.c */; };
 		C6F9EBBC105335BD0059C3BA /* mime_message_driver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E924105335BC0059C3BA /* mime_message_driver.c */; };
 		C6F9EBF7105335BD0059C3BA /* maildriver.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E965105335BC0059C3BA /* maildriver.c */; };
 		C6F9EBFA105335BD0059C3BA /* maildriver_tools.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9E968105335BC0059C3BA /* maildriver_tools.c */; };
@@ -423,9 +399,6 @@
 		C6F9ECBA105335BD0059C3BA /* mailimf_write_file.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA33105335BC0059C3BA /* mailimf_write_file.c */; };
 		C6F9ECBC105335BD0059C3BA /* mailimf_write_generic.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA35105335BC0059C3BA /* mailimf_write_generic.c */; };
 		C6F9ECBE105335BD0059C3BA /* mailimf_write_mem.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA37105335BC0059C3BA /* mailimf_write_mem.c */; };
-		C6F9ECD3105335BD0059C3BA /* mailmbox.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA50105335BC0059C3BA /* mailmbox.c */; };
-		C6F9ECD5105335BD0059C3BA /* mailmbox_parse.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA52105335BC0059C3BA /* mailmbox_parse.c */; };
-		C6F9ECD7105335BD0059C3BA /* mailmbox_types.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA54105335BC0059C3BA /* mailmbox_types.c */; };
 		C6F9ECEE105335BD0059C3BA /* mailmime.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA6F105335BC0059C3BA /* mailmime.c */; };
 		C6F9ECF0105335BD0059C3BA /* mailmime_content.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA71105335BC0059C3BA /* mailmime_content.c */; };
 		C6F9ECF2105335BD0059C3BA /* mailmime_decode.c in Sources */ = {isa = PBXBuildFile; fileRef = C6F9EA73105335BC0059C3BA /* mailmime_decode.c */; };
@@ -616,19 +589,6 @@
 		C6F9E8C9105335BC0059C3BA /* imapdriver_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imapdriver_types.h; sourceTree = "<group>"; };
 		C6F9E8CA105335BC0059C3BA /* imapstorage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = imapstorage.c; sourceTree = "<group>"; };
 		C6F9E8CB105335BC0059C3BA /* imapstorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imapstorage.h; sourceTree = "<group>"; };
-		C6F9E8F7105335BC0059C3BA /* mboxdriver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mboxdriver.c; sourceTree = "<group>"; };
-		C6F9E8F8105335BC0059C3BA /* mboxdriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxdriver.h; sourceTree = "<group>"; };
-		C6F9E8F9105335BC0059C3BA /* mboxdriver_cached.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mboxdriver_cached.c; sourceTree = "<group>"; };
-		C6F9E8FA105335BC0059C3BA /* mboxdriver_cached.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxdriver_cached.h; sourceTree = "<group>"; };
-		C6F9E8FB105335BC0059C3BA /* mboxdriver_cached_message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mboxdriver_cached_message.c; sourceTree = "<group>"; };
-		C6F9E8FC105335BC0059C3BA /* mboxdriver_cached_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxdriver_cached_message.h; sourceTree = "<group>"; };
-		C6F9E8FD105335BC0059C3BA /* mboxdriver_message.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mboxdriver_message.c; sourceTree = "<group>"; };
-		C6F9E8FE105335BC0059C3BA /* mboxdriver_message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxdriver_message.h; sourceTree = "<group>"; };
-		C6F9E8FF105335BC0059C3BA /* mboxdriver_tools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mboxdriver_tools.c; sourceTree = "<group>"; };
-		C6F9E900105335BC0059C3BA /* mboxdriver_tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxdriver_tools.h; sourceTree = "<group>"; };
-		C6F9E901105335BC0059C3BA /* mboxdriver_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxdriver_types.h; sourceTree = "<group>"; };
-		C6F9E902105335BC0059C3BA /* mboxstorage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mboxstorage.c; sourceTree = "<group>"; };
-		C6F9E903105335BC0059C3BA /* mboxstorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mboxstorage.h; sourceTree = "<group>"; };
 		C6F9E924105335BC0059C3BA /* mime_message_driver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mime_message_driver.c; sourceTree = "<group>"; };
 		C6F9E925105335BC0059C3BA /* mime_message_driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mime_message_driver.h; sourceTree = "<group>"; };
 		C6F9E965105335BC0059C3BA /* maildriver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maildriver.c; sourceTree = "<group>"; };
@@ -757,12 +717,6 @@
 		C6F9EA36105335BC0059C3BA /* mailimf_write_generic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailimf_write_generic.h; sourceTree = "<group>"; };
 		C6F9EA37105335BC0059C3BA /* mailimf_write_mem.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailimf_write_mem.c; sourceTree = "<group>"; };
 		C6F9EA38105335BC0059C3BA /* mailimf_write_mem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailimf_write_mem.h; sourceTree = "<group>"; };
-		C6F9EA50105335BC0059C3BA /* mailmbox.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailmbox.c; sourceTree = "<group>"; };
-		C6F9EA51105335BC0059C3BA /* mailmbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailmbox.h; sourceTree = "<group>"; };
-		C6F9EA52105335BC0059C3BA /* mailmbox_parse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailmbox_parse.c; sourceTree = "<group>"; };
-		C6F9EA53105335BC0059C3BA /* mailmbox_parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailmbox_parse.h; sourceTree = "<group>"; };
-		C6F9EA54105335BC0059C3BA /* mailmbox_types.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailmbox_types.c; sourceTree = "<group>"; };
-		C6F9EA55105335BC0059C3BA /* mailmbox_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailmbox_types.h; sourceTree = "<group>"; };
 		C6F9EA6F105335BC0059C3BA /* mailmime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailmime.c; sourceTree = "<group>"; };
 		C6F9EA70105335BC0059C3BA /* mailmime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mailmime.h; sourceTree = "<group>"; };
 		C6F9EA71105335BC0059C3BA /* mailmime_content.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mailmime_content.c; sourceTree = "<group>"; };
@@ -974,7 +928,6 @@
 				C6F9E88D105335BC0059C3BA /* db */,
 				C6F9E89D105335BC0059C3BA /* feed */,
 				C6F9E8B5105335BC0059C3BA /* imap */,
-				C6F9E8EB105335BC0059C3BA /* mbox */,
 				C6F9E91D105335BC0059C3BA /* mime-message */,
 			);
 			path = implementation;
@@ -1036,26 +989,6 @@
 				C6F9E8CB105335BC0059C3BA /* imapstorage.h */,
 			);
 			path = imap;
-			sourceTree = "<group>";
-		};
-		C6F9E8EB105335BC0059C3BA /* mbox */ = {
-			isa = PBXGroup;
-			children = (
-				C6F9E8F7105335BC0059C3BA /* mboxdriver.c */,
-				C6F9E8F8105335BC0059C3BA /* mboxdriver.h */,
-				C6F9E8F9105335BC0059C3BA /* mboxdriver_cached.c */,
-				C6F9E8FA105335BC0059C3BA /* mboxdriver_cached.h */,
-				C6F9E8FB105335BC0059C3BA /* mboxdriver_cached_message.c */,
-				C6F9E8FC105335BC0059C3BA /* mboxdriver_cached_message.h */,
-				C6F9E8FD105335BC0059C3BA /* mboxdriver_message.c */,
-				C6F9E8FE105335BC0059C3BA /* mboxdriver_message.h */,
-				C6F9E8FF105335BC0059C3BA /* mboxdriver_tools.c */,
-				C6F9E900105335BC0059C3BA /* mboxdriver_tools.h */,
-				C6F9E901105335BC0059C3BA /* mboxdriver_types.h */,
-				C6F9E902105335BC0059C3BA /* mboxstorage.c */,
-				C6F9E903105335BC0059C3BA /* mboxstorage.h */,
-			);
-			path = mbox;
 			sourceTree = "<group>";
 		};
 		C6F9E91D105335BC0059C3BA /* mime-message */ = {
@@ -1137,7 +1070,6 @@
 				C6F9E9AF105335BC0059C3BA /* feed */,
 				C6F9E9D3105335BC0059C3BA /* imap */,
 				C6F9EA23105335BC0059C3BA /* imf */,
-				C6F9EA4A105335BC0059C3BA /* mbox */,
 				C6F9EA63105335BC0059C3BA /* mime */,
 				C6F9EAA9105335BC0059C3BA /* smtp */,
 			);
@@ -1298,19 +1230,6 @@
 				C6F9EA38105335BC0059C3BA /* mailimf_write_mem.h */,
 			);
 			path = imf;
-			sourceTree = "<group>";
-		};
-		C6F9EA4A105335BC0059C3BA /* mbox */ = {
-			isa = PBXGroup;
-			children = (
-				C6F9EA50105335BC0059C3BA /* mailmbox.c */,
-				C6F9EA51105335BC0059C3BA /* mailmbox.h */,
-				C6F9EA52105335BC0059C3BA /* mailmbox_parse.c */,
-				C6F9EA53105335BC0059C3BA /* mailmbox_parse.h */,
-				C6F9EA54105335BC0059C3BA /* mailmbox_types.c */,
-				C6F9EA55105335BC0059C3BA /* mailmbox_types.h */,
-			);
-			path = mbox;
 			sourceTree = "<group>";
 		};
 		C6F9EA63105335BC0059C3BA /* mime */ = {
@@ -1606,12 +1525,6 @@
 				C6F9EB64105335BD0059C3BA /* imapdriver_message.c in Sources */,
 				C6F9EB66105335BD0059C3BA /* imapdriver_tools.c in Sources */,
 				C6F9EB6A105335BD0059C3BA /* imapstorage.c in Sources */,
-				C6F9EB93105335BD0059C3BA /* mboxdriver.c in Sources */,
-				C6F9EB95105335BD0059C3BA /* mboxdriver_cached.c in Sources */,
-				C6F9EB97105335BD0059C3BA /* mboxdriver_cached_message.c in Sources */,
-				C6F9EB99105335BD0059C3BA /* mboxdriver_message.c in Sources */,
-				C6F9EB9B105335BD0059C3BA /* mboxdriver_tools.c in Sources */,
-				C6F9EB9E105335BD0059C3BA /* mboxstorage.c in Sources */,
 				C6F9EBBC105335BD0059C3BA /* mime_message_driver.c in Sources */,
 				C6F9EBF7105335BD0059C3BA /* maildriver.c in Sources */,
 				C6F9EBFA105335BD0059C3BA /* maildriver_tools.c in Sources */,
@@ -1673,9 +1586,6 @@
 				C64DC0181788AB3C0012CA0B /* mailsmtp_oauth2.c in Sources */,
 				C6F9ECBC105335BD0059C3BA /* mailimf_write_generic.c in Sources */,
 				C6F9ECBE105335BD0059C3BA /* mailimf_write_mem.c in Sources */,
-				C6F9ECD3105335BD0059C3BA /* mailmbox.c in Sources */,
-				C6F9ECD5105335BD0059C3BA /* mailmbox_parse.c in Sources */,
-				C6F9ECD7105335BD0059C3BA /* mailmbox_types.c in Sources */,
 				C6F9ECEE105335BD0059C3BA /* mailmime.c in Sources */,
 				C6F9ECF0105335BD0059C3BA /* mailmime_content.c in Sources */,
 				C6F9ECF2105335BD0059C3BA /* mailmime_decode.c in Sources */,
@@ -1781,9 +1691,6 @@
 				C682E25A15B315EF00BE9DA7 /* mailimf_write_generic.c in Sources */,
 				C682E25B15B315EF00BE9DA7 /* mailimf_write_mem.c in Sources */,
 				C682E25C15B315EF00BE9DA7 /* maillock.c in Sources */,
-				C682E25D15B315EF00BE9DA7 /* mailmbox.c in Sources */,
-				C682E25E15B315EF00BE9DA7 /* mailmbox_parse.c in Sources */,
-				C682E25F15B315EF00BE9DA7 /* mailmbox_types.c in Sources */,
 				C682E26015B315EF00BE9DA7 /* mailmessage.c in Sources */,
 				C682E26115B315EF00BE9DA7 /* mailmessage_tools.c in Sources */,
 				C682E26215B315EF00BE9DA7 /* mailmessage_types.c in Sources */,
@@ -1816,12 +1723,6 @@
 				C682E28215B315EF00BE9DA7 /* mailstream_ssl.c in Sources */,
 				C682E28315B315EF00BE9DA7 /* mailthread.c in Sources */,
 				C682E28415B315EF00BE9DA7 /* mailthread_types.c in Sources */,
-				C682E28515B315EF00BE9DA7 /* mboxdriver.c in Sources */,
-				C682E28615B315EF00BE9DA7 /* mboxdriver_cached.c in Sources */,
-				C682E28715B315EF00BE9DA7 /* mboxdriver_cached_message.c in Sources */,
-				C682E28815B315EF00BE9DA7 /* mboxdriver_message.c in Sources */,
-				C682E28915B315EF00BE9DA7 /* mboxdriver_tools.c in Sources */,
-				C682E28A15B315EF00BE9DA7 /* mboxstorage.c in Sources */,
 				C682E28B15B315EF00BE9DA7 /* md5.c in Sources */,
 				C682E29215B315EF00BE9DA7 /* mime_message_driver.c in Sources */,
 				C682E29315B315EF00BE9DA7 /* mmapstring.c in Sources */,
@@ -1931,9 +1832,6 @@
 				C69AB2211054704000F32FBD /* mailimf_write_generic.c in Sources */,
 				C69AB2231054704000F32FBD /* mailimf_write_mem.c in Sources */,
 				C69AB2251054704000F32FBD /* maillock.c in Sources */,
-				C69AB2271054704000F32FBD /* mailmbox.c in Sources */,
-				C69AB2291054704000F32FBD /* mailmbox_parse.c in Sources */,
-				C69AB22B1054704000F32FBD /* mailmbox_types.c in Sources */,
 				C69AB22D1054704000F32FBD /* mailmessage.c in Sources */,
 				C69AB22F1054704000F32FBD /* mailmessage_tools.c in Sources */,
 				C69AB2311054704000F32FBD /* mailmessage_types.c in Sources */,
@@ -1966,12 +1864,6 @@
 				C69AB2781054704000F32FBD /* mailstream_ssl.c in Sources */,
 				C69AB27C1054704000F32FBD /* mailthread.c in Sources */,
 				C69AB27E1054704000F32FBD /* mailthread_types.c in Sources */,
-				C69AB2801054704000F32FBD /* mboxdriver.c in Sources */,
-				C69AB2821054704000F32FBD /* mboxdriver_cached.c in Sources */,
-				C69AB2841054704000F32FBD /* mboxdriver_cached_message.c in Sources */,
-				C69AB2861054704000F32FBD /* mboxdriver_message.c in Sources */,
-				C69AB2881054704000F32FBD /* mboxdriver_tools.c in Sources */,
-				C69AB28B1054704000F32FBD /* mboxstorage.c in Sources */,
 				C69AB28D1054704000F32FBD /* md5.c in Sources */,
 				C69AB29D1054704000F32FBD /* mime_message_driver.c in Sources */,
 				C69AB29F1054704000F32FBD /* mmapstring.c in Sources */,
