@@ -85,13 +85,6 @@ extern "C" {
 /* Hotmail */
 #include <libetpan/hotmailstorage.h>
 
-/* NNTP driver */
-#include <libetpan/nntpdriver.h>
-#include <libetpan/nntpdriver_message.h>
-#include <libetpan/nntpdriver_cached.h>
-#include <libetpan/nntpdriver_cached_message.h>
-#include <libetpan/nntpstorage.h>
-
 /* maildir driver */
 #include <libetpan/maildirdriver.h>
 #include <libetpan/maildirdriver_message.h>
