@@ -430,6 +430,15 @@ static int imapdriver_select_folder(mailsession * session, const char * mb)
   char * old_mb;
 
   old_mb = get_data(session)->imap_mailbox;
+
+  if (mb == NULL) {
+    if (old_mb != NULL) {
+      free(old_mb);
+    }
+    get_data(session)->imap_mailbox = NULL;
+    return MAIL_NO_ERROR;
+  }
+
   if (old_mb != NULL)
     if (strcmp(mb, old_mb) == 0)
       return MAIL_NO_ERROR;
