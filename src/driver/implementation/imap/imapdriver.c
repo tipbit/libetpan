@@ -635,7 +635,7 @@ static int imapdriver_status_folder(mailsession * session, const char * mb,
   }
   
   current_mb = get_data(session)->imap_mailbox;
-  if (strcmp(mb, current_mb) == 0)
+  if (current_mb != NULL && strcmp(mb, current_mb) == 0)
     current_folder = 1;
   else
     current_folder = 0;
