@@ -40,6 +40,7 @@
 #include "mailimap_helper.h"
 
 #include <stdlib.h>
+#include <string.h>
 #include "mailimap.h"
 
 int mailimap_fetch_rfc822(mailimap * session,
@@ -202,3 +203,12 @@ int mailimap_login_simple(mailimap * session,
     return MAILIMAP_NO_ERROR;
 }
 
+
+int mailimap_login_get_response_error_code(const char * imap_response) {
+  // Gmail gives this response.
+  if (NULL != strstr(imap_response, "Too many simultaneous connections")) {
+    return MAILIMAP_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS;
+  }
+
+  return MAILIMAP_ERROR_LOGIN;
+}

@@ -59,6 +59,14 @@ int mailimap_append_simple(mailimap * session, const char * mailbox,
 int mailimap_login_simple(mailimap * session,
 			  const char * userid, const char * password);
 
+/**
+ * Given the response from a login call, figure out what the error code should be.
+ *
+ * This defaults to MAILIMAP_ERROR_LOGIN, but it might be
+ * MAILIMAP_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS.
+ */
+int mailimap_login_get_response_error_code(const char * imap_response);
+
 #ifdef __cplusplus
 }
 #endif

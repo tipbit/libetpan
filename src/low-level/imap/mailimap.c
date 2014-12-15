@@ -38,6 +38,7 @@
 #endif
 
 #include "mailimap.h"
+#include "mailimap_helper.h"
 #include "mailimap_parser.h"
 #include "mailimap_sender.h"
 #include "mailimap_extension.h"
@@ -1537,7 +1538,7 @@ int mailimap_login(mailimap * session,
 #if DEBUG
       fprintf(stderr, "Error %d in mailimap_login: %s\n", error_code, session->imap_response);
 #endif
-    return MAILIMAP_ERROR_LOGIN;
+    return mailimap_login_get_response_error_code(session->imap_response);
   }
 }
 
