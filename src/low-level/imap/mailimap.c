@@ -1534,6 +1534,9 @@ int mailimap_login(mailimap * session,
     return MAILIMAP_NO_ERROR;
 
   default:
+#if DEBUG
+      fprintf(stderr, "Error %d in mailimap_login", error_code);
+#endif
     return MAILIMAP_ERROR_LOGIN;
   }
 }
@@ -1672,6 +1675,9 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
       local_ip_port, remote_ip_port, sasl_callback, 0,
       (sasl_conn_t **) &session->imap_sasl.sasl_conn);
   if (r != SASL_OK) {
+#if DEBUG
+    fprintf(stderr, "Error %d in mailimap_authenticate sasl_client_new", r);
+#endif
     res = MAILIMAP_ERROR_LOGIN;
     goto free_secret;
   }
@@ -1679,6 +1685,9 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
   r = sasl_client_start(session->imap_sasl.sasl_conn,
       auth_type, NULL, &sasl_out, &sasl_out_len, &mechusing);
   if ((r != SASL_CONTINUE) && (r != SASL_OK)) {
+#if DEBUG
+    fprintf(stderr, "Error %d in mailimap_authenticate sasl_client_start", r);
+#endif
     res = MAILIMAP_ERROR_LOGIN;
     goto free_sasl_conn;
   }
@@ -1774,6 +1783,9 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
       free(decoded);
       
       if ((r != SASL_CONTINUE) && (r != SASL_OK)) {
+#if DEBUG
+        fprintf(stderr, "Error %d in mailimap_authenticate parsing SASL response", r);
+#endif
         res = MAILIMAP_ERROR_LOGIN;
         goto free_sasl_conn;
       }
@@ -1838,6 +1850,9 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
     goto free_sasl_conn;
     
   default:
+#if DEBUG
+      fprintf(stderr, "Error %d in mailimap_authenticate parsing response", error_code);
+#endif
     res = MAILIMAP_ERROR_LOGIN;
     goto free_sasl_conn;
   }
@@ -1853,6 +1868,9 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
  err:
   return res;
 #else
+#if DEBUG
+  fprintf(stderr, "USE_SASL disabled in mailimap_authenticate");
+#endif
   return MAILIMAP_ERROR_LOGIN;
 #endif
 }
