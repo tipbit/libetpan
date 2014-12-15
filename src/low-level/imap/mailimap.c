@@ -1535,7 +1535,7 @@ int mailimap_login(mailimap * session,
 
   default:
 #if DEBUG
-      fprintf(stderr, "Error %d in mailimap_login\n", error_code);
+      fprintf(stderr, "Error %d in mailimap_login: %s\n", error_code, session->imap_response);
 #endif
     return MAILIMAP_ERROR_LOGIN;
   }
