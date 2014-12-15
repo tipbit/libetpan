@@ -131,7 +131,7 @@ int mailimap_oauth2_authenticate(mailimap * session, const char *auth_user, cons
       
     default:
 #if DEBUG
-      fprintf(stderr, "Error %d in mailimap_oauth2_authenticate", error_code);
+      fprintf(stderr, "Error %d in mailimap_oauth2_authenticate\n", error_code);
 #endif
       return is_too_many_simulaneous ? MAILIMAP_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS : MAILIMAP_ERROR_LOGIN;
   }

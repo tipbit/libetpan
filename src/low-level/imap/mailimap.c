@@ -1535,7 +1535,7 @@ int mailimap_login(mailimap * session,
 
   default:
 #if DEBUG
-      fprintf(stderr, "Error %d in mailimap_login", error_code);
+      fprintf(stderr, "Error %d in mailimap_login\n", error_code);
 #endif
     return MAILIMAP_ERROR_LOGIN;
   }
@@ -1676,7 +1676,7 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
       (sasl_conn_t **) &session->imap_sasl.sasl_conn);
   if (r != SASL_OK) {
 #if DEBUG
-    fprintf(stderr, "Error %d in mailimap_authenticate sasl_client_new", r);
+    fprintf(stderr, "Error %d in mailimap_authenticate sasl_client_new\n", r);
 #endif
     res = MAILIMAP_ERROR_LOGIN;
     goto free_secret;
@@ -1686,7 +1686,7 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
       auth_type, NULL, &sasl_out, &sasl_out_len, &mechusing);
   if ((r != SASL_CONTINUE) && (r != SASL_OK)) {
 #if DEBUG
-    fprintf(stderr, "Error %d in mailimap_authenticate sasl_client_start", r);
+    fprintf(stderr, "Error %d in mailimap_authenticate sasl_client_start\n", r);
 #endif
     res = MAILIMAP_ERROR_LOGIN;
     goto free_sasl_conn;
@@ -1784,7 +1784,7 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
       
       if ((r != SASL_CONTINUE) && (r != SASL_OK)) {
 #if DEBUG
-        fprintf(stderr, "Error %d in mailimap_authenticate parsing SASL response", r);
+        fprintf(stderr, "Error %d in mailimap_authenticate parsing SASL response\n", r);
 #endif
         res = MAILIMAP_ERROR_LOGIN;
         goto free_sasl_conn;
@@ -1851,7 +1851,7 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
     
   default:
 #if DEBUG
-      fprintf(stderr, "Error %d in mailimap_authenticate parsing response", error_code);
+      fprintf(stderr, "Error %d in mailimap_authenticate parsing response\n", error_code);
 #endif
     res = MAILIMAP_ERROR_LOGIN;
     goto free_sasl_conn;
@@ -1869,7 +1869,7 @@ int mailimap_authenticate(mailimap * session, const char * auth_type,
   return res;
 #else
 #if DEBUG
-  fprintf(stderr, "USE_SASL disabled in mailimap_authenticate");
+  fprintf(stderr, "USE_SASL disabled in mailimap_authenticate\n");
 #endif
   return MAILIMAP_ERROR_LOGIN;
 #endif
