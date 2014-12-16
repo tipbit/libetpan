@@ -41,6 +41,9 @@
 
 #include <stdlib.h>
 #include <string.h>
+#if DEBUG
+#include <stdio.h>
+#endif
 #include "mailimap.h"
 
 int mailimap_fetch_rfc822(mailimap * session,
@@ -207,8 +210,14 @@ int mailimap_login_simple(mailimap * session,
 int mailimap_login_get_response_error_code(const char * imap_response) {
   // Gmail gives this response.
   if (NULL != strstr(imap_response, "Too many simultaneous connections")) {
+#if DEBUG
+    fprintf(stderr, "Returning TOO_MANY_SIMULTANEOUS_CONNECTIONS for %s\n", imap_response);
+#endif
     return MAILIMAP_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS;
   }
 
+#if DEBUG
+  fprintf(stderr, "Returning ERROR_LOGIN for %s\n", imap_response);
+#endif
   return MAILIMAP_ERROR_LOGIN;
 }
