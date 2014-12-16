@@ -199,6 +199,9 @@ int imap_error_to_mail_error(int error)
   case MAILIMAP_ERROR_INVAL:
     return MAIL_ERROR_INVAL;
 
+  case MAILIMAP_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS:
+    return MAIL_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS;
+
   default:
     return MAIL_ERROR_INVAL;
   }
