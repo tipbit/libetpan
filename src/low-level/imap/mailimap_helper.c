@@ -206,7 +206,7 @@ int mailimap_login_simple(mailimap * session,
 
 int mailimap_login_get_response_error_code(const char * imap_response) {
   // Gmail gives this response.
-  if (NULL != strstr("Too many simultaneous connections", imap_response)) {
+  if (NULL != strstr(imap_response, "Too many simultaneous connections")) {
     return MAILIMAP_ERROR_TOO_MANY_SIMULTANEOUS_CONNECTIONS;
   }
 
