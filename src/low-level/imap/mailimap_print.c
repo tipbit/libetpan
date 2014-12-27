@@ -68,6 +68,10 @@ static void print_indent()
 static void mailimap_body_fld_lang_print(struct mailimap_body_fld_lang *
 					 fld_lang)
 {
+  if (fld_lang == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -98,12 +102,20 @@ static void
 mailimap_single_body_fld_param_print(struct mailimap_single_body_fld_param *
 				     single)
 {
+  if (single == NULL) {
+    return;
+  }
+
   printf("(%s = %s)", single->pa_name, single->pa_value);
 }
 
 static void mailimap_body_fld_param_print(struct mailimap_body_fld_param *
 					  fld_param)
 {
+  if (fld_param == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -123,6 +135,10 @@ static void mailimap_body_fld_param_print(struct mailimap_body_fld_param *
 
 static void mailimap_body_fld_dsp_print(struct mailimap_body_fld_dsp * fld_dsp)
 {
+  if (fld_dsp == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-fld-dsp {\n");
   indent();
@@ -141,6 +157,10 @@ static void mailimap_body_extension_list_print(clist * ext_list);
 
 static void mailimap_body_extension_print(struct mailimap_body_extension * ext)
 {
+  if (ext == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-extention {\n");
   indent();
@@ -167,6 +187,10 @@ static void mailimap_body_extension_print(struct mailimap_body_extension * ext)
 
 static void mailimap_body_extension_list_print(clist * ext_list)
 {
+  if (ext_list == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -190,6 +214,10 @@ static void mailimap_body_extension_list_print(clist * ext_list)
 static void mailimap_body_ext_1part_print(struct mailimap_body_ext_1part *
 					  body_ext_1part)
 {
+  if (body_ext_1part == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-type-1part {\n");
   indent();
@@ -214,6 +242,10 @@ static void mailimap_body_ext_1part_print(struct mailimap_body_ext_1part *
 static void mailimap_body_type_text_print(struct mailimap_body_type_text *
 					  body_type_text)
 {
+  if (body_type_text == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-type-text {\n");
   indent();
@@ -232,6 +264,10 @@ static void mailimap_body_type_text_print(struct mailimap_body_type_text *
 static void mailimap_body_type_msg_print(struct mailimap_body_type_msg *
 					 body_type_msg)
 {
+  if (body_type_msg == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-type-msg {\n");
   indent();
@@ -251,6 +287,10 @@ static void mailimap_body_type_msg_print(struct mailimap_body_type_msg *
 
 static void mailimap_body_fld_enc_print(struct mailimap_body_fld_enc * fld_enc)
 {
+  if (fld_enc == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-fld-enc { ");
 
@@ -282,6 +322,10 @@ static void mailimap_body_fld_enc_print(struct mailimap_body_fld_enc * fld_enc)
 static void mailimap_body_fields_print(struct mailimap_body_fields *
 				       body_fields)
 {
+  if (body_fields == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-fields {\n");
   indent();
@@ -302,6 +346,10 @@ static void mailimap_body_fields_print(struct mailimap_body_fields *
 static void mailimap_media_basic_print(struct mailimap_media_basic *
 				       media_basic)
 {
+  if (media_basic == NULL) {
+    return;
+  }
+
   print_indent();
   printf("media-basic {");
 
@@ -331,6 +379,10 @@ static void mailimap_media_basic_print(struct mailimap_media_basic *
 static void mailimap_body_type_basic_print(struct mailimap_body_type_basic *
 					   body_type_basic)
 {
+  if (body_type_basic == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-type-basic {\n");
   indent();
@@ -346,6 +398,10 @@ static void mailimap_body_type_basic_print(struct mailimap_body_type_basic *
 static void mailimap_body_type_1part_print(struct mailimap_body_type_1part *
 					   body_type_1part)
 {
+  if (body_type_1part == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-type-1part {\n");
   indent();
@@ -374,6 +430,10 @@ static void mailimap_body_type_1part_print(struct mailimap_body_type_1part *
 
 static void mailimap_body_ext_mpart(struct mailimap_body_ext_mpart * ext_mpart)
 {
+  if (ext_mpart == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body-ext-mpart {\n");
   indent();
@@ -397,19 +457,25 @@ static void mailimap_body_ext_mpart(struct mailimap_body_ext_mpart * ext_mpart)
 static void mailimap_body_type_mpart_print(struct mailimap_body_type_mpart *
 					   mpart)
 {
+  if (mpart == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
   printf("body-type-mpart {\n");
   indent();
 
-  for(cur = clist_begin(mpart->bd_list) ; cur != NULL ;
-      cur = clist_next(cur)) {
-    struct mailimap_body * body;
+  if (mpart->bd_list != NULL) {
+    for(cur = clist_begin(mpart->bd_list) ; cur != NULL ;
+        cur = clist_next(cur)) {
+      struct mailimap_body * body;
 
-    body = clist_content(cur);
-    
-    mailimap_body_print(body);
+      body = clist_content(cur);
+
+      mailimap_body_print(body);
+    }
   }
 
   printf("media-subtype { %s }\n", mpart->bd_media_subtype);
@@ -425,6 +491,10 @@ static void mailimap_body_type_mpart_print(struct mailimap_body_type_mpart *
 
 static void mailimap_body_print(struct mailimap_body * body)
 {
+  if (body == NULL) {
+    return;
+  }
+
   print_indent();
   printf("body {\n");
   indent();
@@ -445,6 +515,10 @@ static void mailimap_body_print(struct mailimap_body * body)
 
 static void mailimap_date_time_print(struct mailimap_date_time * date_time)
 {
+  if (date_time == NULL) {
+    return;
+  }
+
   print_indent();
   printf("date-time { %i/%i/%i - %i:%i:%i %i }\n",
 	 date_time->dt_day, date_time->dt_month, date_time->dt_year,
@@ -454,6 +528,10 @@ static void mailimap_date_time_print(struct mailimap_date_time * date_time)
 
 static void mailimap_address_print(struct mailimap_address * address)
 {
+  if (address == NULL) {
+    return;
+  }
+
   print_indent();
   printf("address { name: %s, addr: %s, mailbox: %s, host: %s) }\n",
 	 address->ad_personal_name, address->ad_source_route,
@@ -462,6 +540,10 @@ static void mailimap_address_print(struct mailimap_address * address)
 
 static void mailimap_envelope_address_list_print(clist * address)
 {
+  if (address == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -484,6 +566,10 @@ static void mailimap_envelope_address_list_print(clist * address)
 
 static void mailimap_envelope_print(struct mailimap_envelope * env)
 {
+  if (env == NULL) {
+    return;
+  }
+
   print_indent();
   printf("envelope {\n");
   indent();
@@ -553,6 +639,10 @@ static void mailimap_envelope_print(struct mailimap_envelope * env)
 static void mailimap_header_list_print(struct mailimap_header_list *
 				       header_list)
 {
+  if (header_list == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -566,6 +656,10 @@ static void mailimap_header_list_print(struct mailimap_header_list *
 static void mailimap_section_msgtext_print(struct mailimap_section_msgtext *
 					   section_msgtext)
 {
+  if (section_msgtext == NULL) {
+    return;
+  }
+
   print_indent();
   printf("section-msgtext {\n");
   indent();
@@ -610,6 +704,10 @@ static void mailimap_section_msgtext_print(struct mailimap_section_msgtext *
 static void mailimap_section_part_print(struct mailimap_section_part *
 					section_part)
 {
+  if (section_part == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -627,6 +725,10 @@ static void mailimap_section_part_print(struct mailimap_section_part *
 static void mailimap_section_text_print(struct mailimap_section_text *
 					section_text)
 {
+  if (section_text == NULL) {
+    return;
+  }
+
   print_indent();
   printf("section-text {\n");
   indent();
@@ -649,6 +751,10 @@ static void mailimap_section_text_print(struct mailimap_section_text *
 static void mailimap_section_spec_print(struct mailimap_section_spec *
 					section_spec)
 {
+  if (section_spec == NULL) {
+    return;
+  }
+
   print_indent();
   printf("section-spec {");
   indent();
@@ -671,6 +777,10 @@ static void mailimap_section_spec_print(struct mailimap_section_spec *
 
 static void mailimap_section_print(struct mailimap_section * section)
 {
+  if (section == NULL) {
+    return;
+  }
+
   print_indent();
   printf("section {\n");
   indent();
@@ -688,6 +798,10 @@ static void mailimap_msg_att_body_section_print(struct
 						mailimap_msg_att_body_section *
 						msg_att_body_section)
 {
+  if (msg_att_body_section == NULL) {
+    return;
+  }
+
   print_indent();
   printf("msg-att-body-section {\n");
   indent();
@@ -705,6 +819,10 @@ static void mailimap_msg_att_body_section_print(struct
 static void mailimap_msg_att_static_print(struct mailimap_msg_att_static *
 					  msg_att_static)
 {
+  if (msg_att_static == NULL) {
+    return;
+  }
+
   print_indent();
   printf("msg-att-static {\n");
   indent();
@@ -809,6 +927,10 @@ static void mailimap_flag_print(struct mailimap_flag * flag);
 
 static void mailimap_flag_fetch_print(struct mailimap_flag_fetch * flag)
 {
+  if (flag == NULL) {
+    return;
+  }
+
   print_indent();
   printf("flag fetch {\n");
   indent();
@@ -836,18 +958,24 @@ static void mailimap_flag_fetch_print(struct mailimap_flag_fetch * flag)
 static void mailimap_msg_att_dynamic_print(struct mailimap_msg_att_dynamic *
 					   dynamic)
 {
+  if (dynamic == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
   printf("msg-att-dynamic {\n");
   indent();
 
-  for(cur = clist_begin(dynamic->att_list) ; cur != NULL ;
-      cur = clist_next(cur)) {
-    struct mailimap_flag_fetch * flag;
+  if (dynamic->att_list != NULL) {
+    for(cur = clist_begin(dynamic->att_list) ; cur != NULL ;
+        cur = clist_next(cur)) {
+      struct mailimap_flag_fetch * flag;
 
-    flag = (struct mailimap_flag_fetch *) clist_content(cur);
-    mailimap_flag_fetch_print(flag);
+      flag = (struct mailimap_flag_fetch *) clist_content(cur);
+      mailimap_flag_fetch_print(flag);
+    }
   }
 
   unindent();
@@ -857,6 +985,10 @@ static void mailimap_msg_att_dynamic_print(struct mailimap_msg_att_dynamic *
 
 static void mailimap_msg_att_item_print(struct mailimap_msg_att_item * item)
 {
+  if (item == NULL) {
+    return;
+  }
+
   print_indent();
   printf("msg-att-item {\n");
   indent();
@@ -877,19 +1009,25 @@ static void mailimap_msg_att_item_print(struct mailimap_msg_att_item * item)
 
 static void mailimap_msg_att_print(struct mailimap_msg_att * msg_att)
 {
+  if (msg_att == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
   printf("msg-att {\n");
   indent();
 
-  for(cur = clist_begin(msg_att->att_list) ; cur != NULL ;
-      cur = clist_next(cur)) {
-    struct mailimap_msg_att_item * item;
+  if (msg_att->att_list != NULL) {
+    for(cur = clist_begin(msg_att->att_list) ; cur != NULL ;
+        cur = clist_next(cur)) {
+      struct mailimap_msg_att_item * item;
 
-    item = clist_content(cur);
-    
-    mailimap_msg_att_item_print(item);
+      item = clist_content(cur);
+
+      mailimap_msg_att_item_print(item);
+    }
   }
 
   unindent();
@@ -900,6 +1038,10 @@ static void mailimap_msg_att_print(struct mailimap_msg_att * msg_att)
 static void mailimap_message_data_print(struct mailimap_message_data *
 					msg_data)
 {
+  if (msg_data == NULL) {
+    return;
+  }
+
   print_indent();
   printf("message-data {\n");
   indent();
@@ -950,6 +1092,10 @@ static void mailimap_status_att_print(int status_att)
 static void
 mailimap_status_info_print(struct mailimap_status_info * info)
 {
+  if (info == NULL) {
+    return;
+  }
+
   print_indent();
   printf("status-info {\n");
   indent();
@@ -968,6 +1114,10 @@ static void
 mailimap_mailbox_data_status_print(struct mailimap_mailbox_data_status *
 				   mb_data_status)
 {
+  if (mb_data_status == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -994,6 +1144,10 @@ mailimap_mailbox_data_status_print(struct mailimap_mailbox_data_status *
 static void mailimap_mbx_list_oflag_print(struct mailimap_mbx_list_oflag *
 					  oflag)
 {
+  if (oflag == NULL) {
+    return;
+  }
+
   print_indent();
   printf("mbx-list-oflag { ");
 
@@ -1032,6 +1186,10 @@ static void mailimap_mbx_list_sflag_print(int sflag)
 static void mailimap_mbx_list_flags_print(struct mailimap_mbx_list_flags *
 					  mbx_list_flags)
 {
+  if (mbx_list_flags == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -1137,12 +1295,14 @@ static void mailimap_mailbox_data_print(struct mailimap_mailbox_data * mb_data)
   case MAILIMAP_MAILBOX_DATA_SEARCH:
     print_indent();
     printf("search { ");
-    for(cur = clist_begin(mb_data->mbd_data.mbd_search) ;
-        cur != NULL ; cur = clist_next(cur)) {
-      uint32_t * id;
+    if (mb_data->mbd_data.mbd_search != NULL) {
+      for(cur = clist_begin(mb_data->mbd_data.mbd_search) ;
+          cur != NULL ; cur = clist_next(cur)) {
+        uint32_t * id;
 
-      id = clist_content(cur);
-      printf("%i ", * id);
+        id = clist_content(cur);
+        printf("%i ", * id);
+      }
     }
     printf(" }\n");
     break;
@@ -1225,6 +1385,10 @@ static void mailimap_capability_data_print(struct mailimap_capability_data *
 static void mailimap_response_data_print(struct mailimap_response_data *
 					 resp_data)
 {
+  if (resp_data == NULL) {
+    return;
+  }
+
   print_indent();
   printf("response-data {\n");
   indent();
@@ -1254,6 +1418,10 @@ static void mailimap_response_data_print(struct mailimap_response_data *
 
 static void mailimap_flag_print(struct mailimap_flag * flag)
 {
+  if (flag == NULL) {
+    return;
+  }
+
   printf("flag { ");
 
   switch (flag->fl_type) {
@@ -1291,6 +1459,10 @@ static void mailimap_flag_print(struct mailimap_flag * flag)
 
 static void mailimap_flag_perm_print(struct mailimap_flag_perm * flag_perm)
 {
+  if (flag_perm == NULL) {
+    return;
+  }
+
   print_indent();
   printf("flag-perm { ");
 
@@ -1309,6 +1481,10 @@ static void mailimap_flag_perm_print(struct mailimap_flag_perm * flag_perm)
  
 static void mailimap_capability_print(struct mailimap_capability * cap)
 {
+  if (cap == NULL) {
+    return;
+  }
+
   print_indent();
   printf("capability { ");
 
@@ -1327,6 +1503,10 @@ static void mailimap_capability_print(struct mailimap_capability * cap)
 static void mailimap_capability_data_print(struct mailimap_capability_data *
 					   cap_data)
 {
+  if (cap_data == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -1350,6 +1530,10 @@ static void mailimap_capability_data_print(struct mailimap_capability_data *
 static void
 mailimap_resp_text_code_print(struct mailimap_resp_text_code * text_code)
 {
+  if (text_code == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
@@ -1435,6 +1619,10 @@ mailimap_resp_text_code_print(struct mailimap_resp_text_code * text_code)
 
 static void mailimap_resp_text_print(struct mailimap_resp_text * resp_text)
 {
+  if (resp_text == NULL) {
+    return;
+  }
+
   print_indent();
   printf("resp-text {\n");
   indent();
@@ -1452,6 +1640,10 @@ static void mailimap_resp_text_print(struct mailimap_resp_text * resp_text)
 static void mailimap_continue_req_print(struct mailimap_continue_req *
 					cont_req)
 {
+  if (cont_req == NULL) {
+    return;
+  }
+
   print_indent();
   printf("continue-req {\n");
   indent();
@@ -1478,6 +1670,10 @@ static void mailimap_continue_req_print(struct mailimap_continue_req *
 
 static void mailimap_cont_req_or_resp_data_print(struct mailimap_cont_req_or_resp_data * cont_req_or_resp_data)
 {
+  if (cont_req_or_resp_data == NULL) {
+    return;
+  }
+
   print_indent();
   printf("cont-req-or-resp-data {\n");
   indent();
@@ -1499,6 +1695,10 @@ static void mailimap_cont_req_or_resp_data_print(struct mailimap_cont_req_or_res
 static void mailimap_response_tagged_print(struct mailimap_response_tagged *
 					   tagged)
 {
+  if (tagged == NULL) {
+    return;
+  }
+
   print_indent();
   printf("response-tagged {\n");
   indent();
@@ -1515,6 +1715,10 @@ static void mailimap_response_tagged_print(struct mailimap_response_tagged *
 static void mailimap_response_fatal_print(struct mailimap_response_fatal *
 					  fatal)
 {
+  if (fatal == NULL) {
+    return;
+  }
+
   print_indent();
   printf("response-fatal {\n");
   indent();
@@ -1529,6 +1733,10 @@ static void mailimap_response_fatal_print(struct mailimap_response_fatal *
 static void mailimap_response_done_print(struct mailimap_response_done *
 					 resp_done)
 {
+  if (resp_done == NULL) {
+    return;
+  }
+
   print_indent();
   printf("response-done {\n");
   indent();
@@ -1549,19 +1757,25 @@ static void mailimap_response_done_print(struct mailimap_response_done *
 
 void mailimap_response_print(struct mailimap_response * resp)
 {
+  if (resp == NULL) {
+    return;
+  }
+
   clistiter * cur;
 
   print_indent();
   printf("response {\n");
   indent();
 
-  for(cur = clist_begin(resp->rsp_cont_req_or_resp_data_list) ; cur != NULL ;
-      cur = clist_next(cur)) {
-    struct mailimap_cont_req_or_resp_data * resp;
+  if (resp->rsp_cont_req_or_resp_data_list != NULL) {
+    for(cur = clist_begin(resp->rsp_cont_req_or_resp_data_list) ; cur != NULL ;
+        cur = clist_next(cur)) {
+      struct mailimap_cont_req_or_resp_data * resp;
 
-    resp = clist_content(cur);
+      resp = clist_content(cur);
 
-    mailimap_cont_req_or_resp_data_print(resp);
+      mailimap_cont_req_or_resp_data_print(resp);
+    }
   }
 
   mailimap_response_done_print(resp->rsp_resp_done);
@@ -1574,6 +1788,10 @@ void mailimap_response_print(struct mailimap_response * resp)
 static void mailimap_resp_cond_auth_print(struct mailimap_resp_cond_auth *
 					  cond_auth)
 {
+  if (cond_auth == NULL) {
+    return;
+  }
+
   print_indent();
   printf("resp-cond-auth {\n");
   indent();
@@ -1595,6 +1813,10 @@ static void mailimap_resp_cond_auth_print(struct mailimap_resp_cond_auth *
 
 void mailimap_greeting_print(struct mailimap_greeting * greeting)
 {
+  if (greeting == NULL) {
+    return;
+  }
+
   print_indent();
   printf("greeting {\n");
   indent();
