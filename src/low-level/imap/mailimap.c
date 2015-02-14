@@ -2544,12 +2544,18 @@ int mailimap_parse_response(mailimap * session,
 
   snprintf(tag_str, 15, "%i", session->imap_tag);
   if (strcmp(response->rsp_resp_done->rsp_data.rsp_tagged->rsp_tag, tag_str) != 0) {
+#if DEBUG
+    fprintf(stderr, "MAILIMAP_ERROR_PROTOCOL: Tag does not match %s != %s: %s\n", response->rsp_resp_done->rsp_data.rsp_tagged->rsp_tag, tag_str, session->imap_response);
+#endif
     mailimap_response_free(response);
     return MAILIMAP_ERROR_PROTOCOL;
   }
   
   if (response->rsp_resp_done->rsp_data.rsp_tagged->rsp_cond_state->rsp_type ==
       MAILIMAP_RESP_COND_STATE_BAD) {
+#if DEBUG
+    fprintf(stderr, "MAILIMAP_ERROR_PROTOCOL: Response is BAD: %s\n", session->imap_response);
+#endif
     mailimap_response_free(response);
     return MAILIMAP_ERROR_PROTOCOL;
   }
