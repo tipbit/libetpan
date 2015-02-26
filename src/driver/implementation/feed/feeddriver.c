@@ -594,6 +594,9 @@ static mailmessage * feed_item_to_message(mailsession * session,
   mailmessage * msg;
   char * subject;
   const char * subject_const;
+  char * received;
+  const char * received_const;
+  
   char * msg_id;
   int r;
   const char * author_const;
@@ -659,6 +662,20 @@ static mailmessage * feed_item_to_message(mailsession * session,
     goto free_subject;
   }
   
+  received = NULL;
+  received_const = newsfeed_item_get_title(item);
+  if (received_const != NULL) {
+    received = make_quoted_printable("utf-8", received_const);
+    if (received == NULL) {
+      goto free_date;
+    }
+  }
+  
+  msg_id = mailimf_get_message_id();
+  if (msg_id == NULL) {
+    goto free_received;
+  }
+  
   fields = mailimf_fields_new_with_data_all(date_time,
       from,
       NULL,
@@ -669,7 +686,8 @@ static mailmessage * feed_item_to_message(mailsession * session,
       msg_id,
       NULL,
       NULL,
-      subject);
+      subject,
+      received);
   
   msg = mailmessage_new();
   r = mailmessage_init(msg, session, feed_message_driver, num, 0);
@@ -683,6 +701,8 @@ static mailmessage * feed_item_to_message(mailsession * session,
  free_fields:
   mailimf_fields_free(fields);
   goto err;
+free_received:
+  free(received);
  free_subject:
   free(subject);
  free_date:

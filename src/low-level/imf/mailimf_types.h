@@ -313,6 +313,7 @@ enum {
   MAILIMF_FIELD_IN_REPLY_TO,    /* In-Reply-To */
   MAILIMF_FIELD_REFERENCES,     /* References */
   MAILIMF_FIELD_SUBJECT,        /* Subject */
+  MAILIMF_FIELD_RECEIVED,       /* Received */
   MAILIMF_FIELD_COMMENTS,       /* Comments */
   MAILIMF_FIELD_KEYWORDS,       /* Keywords */
   MAILIMF_FIELD_OPTIONAL_FIELD  /* other field */
@@ -364,6 +365,8 @@ enum {
 
   - fld_data.fld_subject is the content of the Subject field
 
+  - fld_data.fld_received is the content of the Received field
+ 
   - fld_data.fld_comments is the content of the Comments field
 
   - fld_data.fld_keywords is the parsed content of the Keywords field
@@ -395,6 +398,7 @@ struct mailimf_field {
     struct mailimf_in_reply_to * fld_in_reply_to;         /* can be NULL */
     struct mailimf_references * fld_references;           /* can be NULL */
     struct mailimf_subject * fld_subject;                 /* can be NULL */
+    struct mailimf_received * fld_received;               /* can be NULL */
     struct mailimf_comments * fld_comments;               /* can be NULL */
     struct mailimf_keywords * fld_keywords;               /* can be NULL */
     struct mailimf_optional_field * fld_optional_field;   /* can be NULL */
@@ -423,6 +427,7 @@ mailimf_field_new(int fld_type,
     struct mailimf_in_reply_to * fld_in_reply_to,
     struct mailimf_references * fld_references,
     struct mailimf_subject * fld_subject,
+    struct mailimf_received * fld_received,
     struct mailimf_comments * fld_comments,
     struct mailimf_keywords * fld_keywords,
     struct mailimf_optional_field * fld_optional_field);
@@ -632,13 +637,22 @@ void mailimf_references_free(struct mailimf_references * references);
 struct mailimf_subject {
   char * sbj_value; /* != NULL */
 };
+struct mailimf_received {
+  char * rcd_value; /* != NULL */
+};
+  
 
 LIBETPAN_EXPORT
 struct mailimf_subject * mailimf_subject_new(char * sbj_value);
 
 LIBETPAN_EXPORT
+struct mailimf_received * mailimf_received_new(char * sbj_value);
+  
+LIBETPAN_EXPORT
 void mailimf_subject_free(struct mailimf_subject * subject);
 
+LIBETPAN_EXPORT
+void mailimf_received_free(struct mailimf_received * received);
 
 /*
   mailimf_comments is the parsed Comments field
@@ -759,6 +773,8 @@ void mailimf_optional_field_free(struct mailimf_optional_field * opt_field);
 
   - fld_subject is the parsed "Subject" field
   
+  - fld_received is the parsed "Received" field
+ 
   - fld_comments is the parsed "Comments" field
 
   - fld_keywords is the parsed "Keywords" field
@@ -776,6 +792,7 @@ struct mailimf_single_fields {
   struct mailimf_in_reply_to * fld_in_reply_to;  /* can be NULL */
   struct mailimf_references * fld_references;    /* can be NULL */
   struct mailimf_subject * fld_subject;          /* can be NULL */
+  struct mailimf_received * fld_received;        /* can be NULL */
   struct mailimf_comments * fld_comments;        /* can be NULL */
   struct mailimf_keywords * fld_keywords;        /* can be NULL */
 };

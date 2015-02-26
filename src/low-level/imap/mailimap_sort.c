@@ -336,6 +336,8 @@ int mailimap_sort_key_send(mailstream * fd,
       return mailimap_token_send(fd, "SIZE");
     case MAILIMAP_SORT_KEY_SUBJECT:
       return mailimap_token_send(fd, "SUBJECT");
+    case MAILIMAP_SORT_KEY_RECEIVED:
+      return mailimap_token_send(fd, "RECEIVED");
     case MAILIMAP_SORT_KEY_TO:
       return mailimap_token_send(fd, "TO");
       

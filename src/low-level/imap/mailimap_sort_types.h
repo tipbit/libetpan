@@ -52,6 +52,7 @@ extern "C" {
     MAILIMAP_SORT_KEY_FROM,
     MAILIMAP_SORT_KEY_SIZE,
     MAILIMAP_SORT_KEY_SUBJECT,
+    MAILIMAP_SORT_KEY_RECEIVED,
     MAILIMAP_SORT_KEY_TO,
     MAILIMAP_SORT_KEY_MULTIPLE
   };
@@ -89,6 +90,9 @@ extern "C" {
   
   struct mailimap_sort_key *
   mailimap_sort_key_new_subject(int is_reverse);
+  
+  struct mailimap_sort_key *
+  mailimap_sort_key_new_received(int is_reverse);
   
   struct mailimap_sort_key *
   mailimap_sort_key_new_to(int is_reverse);

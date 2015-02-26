@@ -180,6 +180,8 @@ enum {
                                  than specified date */
   MAIL_SEARCH_KEY_SUBJECT,    /* messages whose Subject field contains the
                                  given string */
+  MAIL_SEARCH_KEY_RECEIVED,    /* messages whose Received field contains the
+                               given string */
   MAIL_SEARCH_KEY_TEXT,       /* messages whose text part contains the
                                  given string */
   MAIL_SEARCH_KEY_TO,         /* messages whose To field contains the
@@ -269,6 +271,7 @@ struct mail_search_key {
     struct mailimf_date_time * sk_on;
     struct mailimf_date_time * sk_since;
     char * sk_subject;
+    char * sk_received;
     char * sk_text;
     char * sk_to;
     char * sk_header_name;
@@ -288,7 +291,7 @@ mail_search_key_new(int sk_type,
     char * sk_bcc, struct mailimf_date_time * sk_before,
     char * sk_body, char * sk_cc, char * sk_from,
     struct mailimf_date_time * sk_on, struct mailimf_date_time * sk_since,
-    char * sk_subject, char * sk_text, char * sk_to,
+    char * sk_subject, char * sk_received, char * sk_text, char * sk_to,
     char * sk_header_name, char * sk_header_value, size_t sk_larger,
     struct mail_search_key * sk_not, struct mail_search_key * sk_or1,
     struct mail_search_key * sk_or2, size_t sk_smaller,

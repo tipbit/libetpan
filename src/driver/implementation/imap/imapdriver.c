@@ -500,7 +500,7 @@ static int status_selected_folder(mailsession * session, const char * mb,
   
   search_key = mailimap_search_key_new(MAILIMAP_SEARCH_KEY_UNSEEN,
       NULL, NULL, NULL, NULL, NULL,
-      NULL, NULL, NULL, NULL, NULL,
+      NULL, NULL, NULL, NULL, NULL, NULL,
       NULL, NULL, NULL, NULL, 0,
       NULL, NULL, NULL, NULL, NULL,
       NULL, 0, NULL, NULL, NULL);

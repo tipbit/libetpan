@@ -113,6 +113,7 @@ static int is_search_header_only(struct mail_search_key * key)
   case MAIL_SEARCH_KEY_SEEN:
   case MAIL_SEARCH_KEY_SINCE:
   case MAIL_SEARCH_KEY_SUBJECT:
+  case MAIL_SEARCH_KEY_RECEIVED:
   case MAIL_SEARCH_KEY_TO:
   case MAIL_SEARCH_KEY_UNANSWERED:
   case MAIL_SEARCH_KEY_UNDELETED:
@@ -268,6 +269,9 @@ static int match_messages(char * message,
   case MAIL_SEARCH_KEY_SUBJECT:
     return match_header(fields, "Subject", key->subject);
 
+  case MAIL_SEARCH_KEY_RECEIVED:
+    return match_header(fields, "Received", key->received);
+      
   case MAIL_SEARCH_KEY_TO:
     return match_header(fields, "To", key->to);
 

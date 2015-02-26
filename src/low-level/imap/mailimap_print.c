@@ -581,6 +581,9 @@ static void mailimap_envelope_print(struct mailimap_envelope * env)
   printf("subject { %s }\n", env->env_subject);
 
   print_indent();
+  printf("received { %s }\n", env->env_received);
+  
+  print_indent();
   printf("from {\n");
   indent();
   mailimap_envelope_address_list_print(env->env_from->frm_list);

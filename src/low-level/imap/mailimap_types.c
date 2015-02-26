@@ -861,7 +861,7 @@ void mailimap_date_time_free(struct mailimap_date_time * date_time)
 
 
 struct mailimap_envelope *
-mailimap_envelope_new(char * env_date, char * env_subject,
+mailimap_envelope_new(char * env_date, char * env_subject, char * env_received,
 		      struct mailimap_env_from * env_from,
 		      struct mailimap_env_sender * env_sender,
 		      struct mailimap_env_reply_to * env_reply_to,
@@ -878,6 +878,7 @@ mailimap_envelope_new(char * env_date, char * env_subject,
 
   env->env_date = env_date;
   env->env_subject = env_subject;
+  env->env_received = env_received;
   env->env_from = env_from;
   env->env_sender = env_sender;
   env->env_reply_to = env_reply_to;
@@ -895,6 +896,8 @@ void mailimap_envelope_free(struct mailimap_envelope * env)
 {
   if (env->env_date)
     mailimap_env_date_free(env->env_date);
+  if (env->env_received)
+    mailimap_env_received_free(env->env_received);
   if (env->env_subject)
     mailimap_env_subject_free(env->env_subject);
   if (env->env_from)
@@ -1040,6 +1043,11 @@ void mailimap_env_sender_free(struct mailimap_env_sender * env_sender)
 void mailimap_env_subject_free(char * subject)
 {
   mailimap_nstring_free(subject);
+}
+
+void mailimap_env_received_free(char * received)
+{
+  mailimap_nstring_free(received);
 }
 
 struct mailimap_env_to * mailimap_env_to_new(clist * to_list)
@@ -2669,7 +2677,7 @@ mailimap_search_key_new(int sk_type,
     char * sk_bcc, struct mailimap_date * sk_before, char * sk_body,
     char * sk_cc, char * sk_from, char * sk_keyword,
     struct mailimap_date * sk_on, struct mailimap_date * sk_since,
-    char * sk_subject, char * sk_text, char * sk_to,
+    char * sk_subject, char * sk_received, char * sk_text, char * sk_to,
     char * sk_unkeyword, char * sk_header_name,
     char * sk_header_value, uint32_t sk_larger,
     struct mailimap_search_key * sk_not,
@@ -2715,6 +2723,9 @@ mailimap_search_key_new(int sk_type,
     break;
   case MAILIMAP_SEARCH_KEY_SUBJECT:
     key->sk_data.sk_subject = sk_subject;
+    break;
+  case MAILIMAP_SEARCH_KEY_RECEIVED:
+    key->sk_data.sk_received = sk_received;
     break;
   case MAILIMAP_SEARCH_KEY_TEXT:
     key->sk_data.sk_text = sk_text;
@@ -2835,6 +2846,9 @@ void mailimap_search_key_free(struct mailimap_search_key * key)
     break;
   case MAILIMAP_SEARCH_KEY_SINCE:
     mailimap_date_free(key->sk_data.sk_since);
+    break;
+  case MAILIMAP_SEARCH_KEY_RECEIVED:
+    mailimap_astring_free(key->sk_data.sk_received);
     break;
   case MAILIMAP_SEARCH_KEY_SUBJECT:
     mailimap_astring_free(key->sk_data.sk_subject);

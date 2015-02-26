@@ -381,6 +381,11 @@ static int mailimap_env_subject_parse(mailstream * fd, MMAPString * buffer,
 				      size_t progr_rate,
 				      progress_function * progr_fun);
 
+static int mailimap_env_received_parse(mailstream * fd, MMAPString * buffer,
+                                      size_t * indx, char ** result,
+                                      size_t progr_rate,
+                                      progress_function * progr_fun);
+
 
 static int
 mailimap_env_to_parse(mailstream * fd, MMAPString * buffer,
@@ -1296,8 +1301,9 @@ mailimap_custom_string_parse(mailstream * fd, MMAPString * buffer,
     * result = gstr;
     return MAILIMAP_NO_ERROR;
   }
-  else
+  else{
     return MAILIMAP_ERROR_PARSE;
+  }
 }
 
 
@@ -4750,7 +4756,7 @@ static int mailimap_digit_nz_parse(mailstream * fd, MMAPString * buffer,
 #endif
 
 /*
-   envelope        = "(" env-date SP env-subject SP env-from SP env-sender SP
+   envelope        = "(" env-date SP env-subject SP env-received SP env-from SP env-sender SP
                      env-reply-to SP env-to SP env-cc SP env-bcc SP
                      env-in-reply-to SP env-message-id ")"
 */
@@ -4764,6 +4770,7 @@ static int mailimap_envelope_parse(mailstream * fd, MMAPString * buffer,
   size_t cur_token;
   char * date;
   char * subject;
+  char * received;
   struct mailimap_env_from * from;
   struct mailimap_env_sender * sender;
   struct mailimap_env_reply_to * reply_to;
@@ -4778,6 +4785,7 @@ static int mailimap_envelope_parse(mailstream * fd, MMAPString * buffer,
   
   date = NULL;
   subject = NULL;
+  received = NULL;
   from = NULL;
   sender = NULL;
   reply_to = NULL;
@@ -4821,11 +4829,25 @@ static int mailimap_envelope_parse(mailstream * fd, MMAPString * buffer,
     goto subject;
   }
 
+//NAVI DEBUG
+  r = mailimap_env_received_parse(fd, buffer, &cur_token, &received,
+                                 progr_rate, progr_fun);
+  if (r != MAILIMAP_NO_ERROR) {
+    res = r;
+    goto date;
+  }
+//
+//  r = mailimap_space_parse(fd, buffer, &cur_token);
+//  if (r != MAILIMAP_NO_ERROR) {
+//    res = r;
+//    goto received;
+//  }
+  
   r = mailimap_env_from_parse(fd, buffer, &cur_token, &from,
 			      progr_rate, progr_fun);
   if (r != MAILIMAP_NO_ERROR) {
     res = r;
-    goto subject;
+    goto received;
   }
 
   r = mailimap_space_parse(fd, buffer, &cur_token);
@@ -4925,7 +4947,7 @@ static int mailimap_envelope_parse(mailstream * fd, MMAPString * buffer,
     goto message_id;
   }
 
-  envelope = mailimap_envelope_new(date, subject, from, sender, reply_to, to,
+  envelope = mailimap_envelope_new(date, subject, received, from, sender, reply_to, to,
 				   cc, bcc, in_reply_to, message_id);
   if (envelope == NULL) {
     res = MAILIMAP_ERROR_MEMORY;
@@ -4953,8 +4975,10 @@ static int mailimap_envelope_parse(mailstream * fd, MMAPString * buffer,
   mailimap_env_sender_free(sender);
  from:
   mailimap_env_from_free(from);
+ received:
+  mailimap_env_received_free(received);
  subject:
-  mailimap_env_subject_free(date);
+  mailimap_env_subject_free(subject);
  date:
   mailimap_env_date_free(date);
  err:
@@ -5310,6 +5334,34 @@ static int mailimap_env_subject_parse(mailstream * fd, MMAPString * buffer,
   return mailimap_nstring_parse(fd, buffer, indx, result, NULL,
 				progr_rate, progr_fun);
 }
+
+/*
+ received         =       "Received:" unstructured CRLF
+ received    =  "Received"    ":"            ; one per relay
+     ["from" domain]           ; sending host
+     ["by"   domain]           ; receiving host
+     ["via"  atom]             ; physical path
+     *("with" atom)             ; link/mail protocol
+     ["id"   msg-id]           ; receiver msg id
+     ["for"  addr-spec]        ; initial form
+     ";"    date-time         ; time received
+ */
+
+static int mailimap_env_received_parse(mailstream * fd, MMAPString * buffer,
+                                      size_t * indx, char ** result,
+                                      size_t progr_rate,
+                                      progress_function * progr_fun)
+{
+  char * text;
+  text = NULL;
+  
+  //NAVI --- this is obviously wrong.
+  return mailimap_text_parse(fd, buffer, indx, &text,
+                          progr_rate, progr_fun);
+  return mailimap_nstring_parse(fd, buffer, indx, result, NULL,
+                                progr_rate, progr_fun);
+}
+
 
 
 /*

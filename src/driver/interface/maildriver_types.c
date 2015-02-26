@@ -125,6 +125,7 @@ mail_search_key_new(int sk_type,
 		    struct mailimf_date_time * sk_on,
 		    struct mailimf_date_time * sk_since,
 		    char * sk_subject,
+        char * sk_received,
 		    char * sk_text,
 		    char * sk_to,
 		    char * sk_header_name,
@@ -151,6 +152,7 @@ mail_search_key_new(int sk_type,
   key->sk_on = sk_on;
   key->sk_since = sk_since;
   key->sk_subject = sk_subject;
+  key->sk_received = sk_received;
   key->sk_text = sk_text;
   key->sk_to = sk_to;
   key->sk_header_name = sk_header_name;
@@ -182,6 +184,8 @@ void mail_search_key_free(struct mail_search_key * key)
     mailimf_date_time_free(key->sk_on);
   if (key->sk_since)
     mailimf_date_time_free(key->sk_since);
+  if (key->sk_received)
+    free(key->sk_received);
   if (key->sk_subject)
     free(key->sk_subject);
   if (key->sk_text)
@@ -283,7 +287,9 @@ static struct error_message message_tab[] = {
 { MAIL_ERROR_COMMAND_NOT_SUPPORTED, "nntp error - command not supported" },
 { MAIL_ERROR_NO_PERMISSION, "nntp error - no permission" },
 { MAIL_ERROR_PROGRAM_ERROR, "nntp error - program error" },
-{ MAIL_ERROR_SUBJECT_NOT_FOUND, "internal threading error - subject not found" }};
+{ MAIL_ERROR_SUBJECT_NOT_FOUND, "internal threading error - subject not found" },
+{ MAIL_ERROR_RECEIVED_NOT_FOUND, "internal threading error - received not found" },
+};
 
 LIBETPAN_EXPORT
 const char * maildriver_strerror(int err)

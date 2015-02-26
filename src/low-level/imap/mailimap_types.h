@@ -208,7 +208,7 @@
    digit-nz        = %x31-39
                        ; 1-9
 
-   envelope        = "(" env-date SP env-subject SP env-from SP env-sender SP
+   envelope        = "(" env-date SP env-subject  SP env-received SP env-from SP env-sender SP
                      env-reply-to SP env-to SP env-cc SP env-bcc SP
                      env-in-reply-to SP env-message-id ")"
 
@@ -230,6 +230,8 @@
 
    env-subject     = nstring
 
+   env-received     = nstring
+ 
    env-to          = "(" 1*address ")" / nil
 
    examine         = "EXAMINE" SP mailbox
@@ -404,7 +406,7 @@
                      "CC" SP astring / "DELETED" / "FLAGGED" /
                      "FROM" SP astring / "KEYWORD" SP flag-keyword / "NEW" /
                      "OLD" / "ON" SP date / "RECENT" / "SEEN" /
-                     "SINCE" SP date / "SUBJECT" SP astring /
+                     "SINCE" SP date / "SUBJECT" SP astring / "RECEIVED" SP astring /
                      "TEXT" SP astring / "TO" SP astring /
                      "UNANSWERED" / "UNDELETED" / "UNFLAGGED" /
                      "UNKEYWORD" SP flag-keyword / "UNSEEN" /
@@ -1181,6 +1183,9 @@ void mailimap_date_time_free(struct mailimap_date_time * date_time);
   - subject is the subject of the message, should be allocated with
     malloc()
   
+ - received is the received field of the message, should be allocated with
+   malloc()
+ 
   - sender is the the parsed content of the "Sender" field
 
   - reply-to is the parsed content of the "Reply-To" field
@@ -1201,6 +1206,7 @@ void mailimap_date_time_free(struct mailimap_date_time * date_time);
 struct mailimap_envelope {
   char * env_date;                             /* can be NULL */
   char * env_subject;                          /* can be NULL */
+  char * env_received;                         /* can be NULL */
   struct mailimap_env_from * env_from;         /* can be NULL */
   struct mailimap_env_sender * env_sender;     /* can be NULL */
   struct mailimap_env_reply_to * env_reply_to; /* can be NULL */
@@ -1212,7 +1218,7 @@ struct mailimap_envelope {
 };
 
 struct mailimap_envelope *
-mailimap_envelope_new(char * env_date, char * env_subject,
+mailimap_envelope_new(char * env_date, char * env_subject, char * env_received,
 		      struct mailimap_env_from * env_from,
 		      struct mailimap_env_sender * env_sender,
 		      struct mailimap_env_reply_to * env_reply_to,
@@ -2826,6 +2832,8 @@ enum {
                                      than specified date */
   MAILIMAP_SEARCH_KEY_SUBJECT,    /* messages whose Subject field contains the
                                      given string */
+  MAILIMAP_SEARCH_KEY_RECEIVED,    /* messages whose Received field contains the
+                                   given string */
   MAILIMAP_SEARCH_KEY_TEXT,       /* messages whose text part contains the
                                      given string */
   MAILIMAP_SEARCH_KEY_TO,         /* messages whose To field contains the
@@ -2893,6 +2901,9 @@ enum {
   - subject is the text to search in the Subject field when type is
     MAILIMAP_SEARCH_KEY_SUBJECT, should be allocated with malloc()
 
+  - received is the text to search in the Received field when type is
+    MAILIMAP_SEARCH_KEY_RECEIVED, should be allocated with malloc()
+ 
   - text is the text to search in the text part of the message when
     type is MAILIMAP_SEARCH_KEY_TEXT, should be allocated with malloc()
 
@@ -2958,6 +2969,7 @@ struct mailimap_search_key {
     struct mailimap_date * sk_on;
     struct mailimap_date * sk_since;
     char * sk_subject;
+    char * sk_received;
     char * sk_text;
     char * sk_to;
     char * sk_unkeyword;
@@ -2995,7 +3007,7 @@ mailimap_search_key_new(int sk_type,
     char * sk_bcc, struct mailimap_date * sk_before, char * sk_body,
     char * sk_cc, char * sk_from, char * sk_keyword,
     struct mailimap_date * sk_on, struct mailimap_date * sk_since,
-    char * sk_subject, char * sk_text, char * sk_to,
+    char * sk_subject, char * sk_received, char * sk_text, char * sk_to,
     char * sk_unkeyword, char * sk_header_name,
     char * sk_header_value, uint32_t sk_larger,
     struct mailimap_search_key * sk_not,
@@ -3090,6 +3102,8 @@ void mailimap_env_message_id_free(char * message_id);
 
 void mailimap_env_subject_free(char * subject);
 
+void mailimap_env_received_free(char * received);
+  
 void mailimap_flag_extension_free(char * flag_extension);
 
 void mailimap_flag_keyword_free(char * flag_keyword);

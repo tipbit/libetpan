@@ -272,7 +272,8 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
 			    char * msg_id,
 			    clist * in_reply_to,
 			    clist * references,
-			    char * subject);
+			    char * subject,
+          char * received);
 
 /*
   mailimf_fields_new_with_data_all creates a new mailimf_fields
@@ -304,7 +305,8 @@ mailimf_fields_new_with_data_all(struct mailimf_date_time * date,
 				 char * message_id,
 				 clist * in_reply_to,
 				 clist * references,
-				 char * subject);
+				 char * subject,
+         char * received);
 
 /*
   mailimf_fields_new_with_data creates a new mailimf_fields
@@ -334,7 +336,8 @@ mailimf_fields_new_with_data(struct mailimf_mailbox_list * from,
 			     struct mailimf_address_list * bcc,
 			     clist * in_reply_to,
 			     clist * references,
-			     char * subject);
+			     char * subject,
+           char * received);
 
 /*
   this function returns an allocated message identifier to

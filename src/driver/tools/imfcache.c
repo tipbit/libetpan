@@ -71,6 +71,8 @@ static int mailimf_cache_references_write(MMAPString * mmapstr, size_t * indx,
 					  struct mailimf_references * references);
 static int mailimf_cache_subject_write(MMAPString * mmapstr, size_t * indx,
 				       struct mailimf_subject * subject);
+static int mailimf_cache_received_write(MMAPString * mmapstr, size_t * indx,
+                                       struct mailimf_received * received);
 static int mailimf_cache_address_list_write(MMAPString * mmapstr,
 					    size_t * indx,
 					    struct mailimf_address_list *
@@ -116,6 +118,8 @@ static int mailimf_cache_references_read(MMAPString * mmapstr, size_t * indx,
 					 struct mailimf_references ** result);
 static int mailimf_cache_subject_read(MMAPString * mmapstr, size_t * indx,
 				      struct mailimf_subject ** result);
+static int mailimf_cache_received_read(MMAPString * mmapstr, size_t * indx,
+                                      struct mailimf_received ** result);
 static int mailimf_cache_address_list_read(MMAPString * mmapstr, size_t * indx,
 					   struct mailimf_address_list ** result);
 static int mailimf_cache_address_read(MMAPString * mmapstr, size_t * indx,
@@ -411,6 +415,10 @@ static int mailimf_cache_field_write(MMAPString * mmapstr, size_t * indx,
     r = mailimf_cache_subject_write(mmapstr, indx,
         field->fld_data.fld_subject);
     break;
+  case MAILIMF_FIELD_RECEIVED:
+    r = mailimf_cache_received_write(mmapstr, indx,
+                                    field->fld_data.fld_received);
+    break;
   default:
     r = 0;
     break;
@@ -439,6 +447,7 @@ static int mailimf_cache_field_read(MMAPString * mmapstr, size_t * indx,
   struct mailimf_in_reply_to * in_reply_to;
   struct mailimf_references * references;
   struct mailimf_subject * subject;
+  struct mailimf_received * received;
   struct mailimf_field * field;
   int res;
 
@@ -453,6 +462,7 @@ static int mailimf_cache_field_read(MMAPString * mmapstr, size_t * indx,
   in_reply_to = NULL;
   references = NULL;
   subject = NULL;
+  received = NULL;
   field = NULL;
 
   r = mailimf_cache_int_read(mmapstr, indx, &type);
@@ -495,6 +505,9 @@ static int mailimf_cache_field_read(MMAPString * mmapstr, size_t * indx,
   case MAILIMF_FIELD_SUBJECT:
     r = mailimf_cache_subject_read(mmapstr, indx, &subject);
     break;
+  case MAILIMF_FIELD_RECEIVED:
+    r = mailimf_cache_received_read(mmapstr, indx, &received);
+    break;
   default:
     r = MAIL_ERROR_INVAL;
     break;
@@ -509,7 +522,7 @@ static int mailimf_cache_field_read(MMAPString * mmapstr, size_t * indx,
       NULL, NULL, NULL, orig_date, from, sender, reply_to,
       to, cc, bcc, message_id,
       in_reply_to, references,
-      subject, NULL, NULL, NULL);
+      subject, received, NULL, NULL, NULL);
   if (field == NULL) {
     res = MAIL_ERROR_MEMORY;
     goto free;
@@ -540,6 +553,8 @@ static int mailimf_cache_field_read(MMAPString * mmapstr, size_t * indx,
     mailimf_in_reply_to_free(in_reply_to);
   if (references != NULL)
     mailimf_references_free(references);
+  if (received != NULL)
+    mailimf_received_free(received);
   if (subject != NULL)
     mailimf_subject_free(subject);
  err:
@@ -1003,6 +1018,13 @@ static int mailimf_cache_subject_write(MMAPString * mmapstr, size_t * indx,
       subject->sbj_value, strlen(subject->sbj_value));
 }
 
+static int mailimf_cache_received_write(MMAPString * mmapstr, size_t * indx,
+                                       struct mailimf_received * received)
+{
+  return mailimf_cache_string_write(mmapstr, indx,
+                                    received->rcd_value, strlen(received->rcd_value));
+}
+
 static int mailimf_cache_subject_read(MMAPString * mmapstr, size_t * indx,
 				      struct mailimf_subject ** result)
 {
@@ -1028,6 +1050,34 @@ static int mailimf_cache_subject_read(MMAPString * mmapstr, size_t * indx,
 
   * result = subject;
 
+  return MAIL_NO_ERROR;
+}
+
+static int mailimf_cache_received_read(MMAPString * mmapstr, size_t * indx,
+                                      struct mailimf_received ** result)
+{
+  char * str;
+  struct mailimf_received * received;
+  int r;
+  
+  r = mailimf_cache_string_read(mmapstr, indx, &str);
+  if (r != MAIL_NO_ERROR)
+    return r;
+  
+  if (str == NULL) {
+    str = strdup("");
+    if (str == NULL)
+      return MAIL_ERROR_MEMORY;
+  }
+  
+  received = mailimf_received_new(str);
+  if (received == NULL) {
+    free(str);
+    return MAIL_ERROR_MEMORY;
+  }
+  
+  * result = received;
+  
   return MAIL_NO_ERROR;
 }
 

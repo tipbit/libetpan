@@ -359,6 +359,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -393,6 +394,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -427,6 +429,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -461,6 +464,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -495,6 +499,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -529,6 +534,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -563,6 +569,7 @@ mailimf_resent_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -704,7 +711,8 @@ static void detach_free_fields(struct mailimf_orig_date * date,
 			       struct mailimf_message_id * msg_id,
 			       struct mailimf_in_reply_to * in_reply_to,
 			       struct mailimf_references * references,
-			       struct mailimf_subject * subject)
+			       struct mailimf_subject * subject,
+             struct mailimf_received * received)
 {
   detach_free_common_fields(date,
       from,
@@ -733,6 +741,11 @@ static void detach_free_fields(struct mailimf_orig_date * date,
     subject->sbj_value = NULL;
     mailimf_subject_free(subject);
   }
+  
+  if (received != NULL) {
+    received->rcd_value = NULL;
+    mailimf_received_free(received);
+  }
 }
 
 
@@ -753,7 +766,8 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
 			    char * msg_id,
 			    clist * in_reply_to,
 			    clist * references,
-			    char * subject)
+			    char * subject,
+          char * received)
 {
   struct mailimf_orig_date * imf_date;
   struct mailimf_from * imf_from;
@@ -766,6 +780,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
   struct mailimf_references * imf_references;
   struct mailimf_in_reply_to * imf_in_reply_to;
   struct mailimf_subject * imf_subject;
+  struct mailimf_received * imf_received;
   struct mailimf_field * field;
   int r;
 
@@ -780,6 +795,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
   imf_references = NULL;
   imf_in_reply_to = NULL;
   imf_subject =NULL;
+  imf_received =NULL;
   field = NULL;
 
   if (date != NULL) {
@@ -806,6 +822,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -840,6 +857,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -874,6 +892,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -908,6 +927,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -942,6 +962,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -976,6 +997,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -1010,6 +1032,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -1044,6 +1067,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -1078,6 +1102,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         imf_in_reply_to /* in reply to */,
         NULL /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -1112,6 +1137,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         imf_references /* references */,
         NULL /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -1146,6 +1172,7 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
         NULL /* in reply to */,
         NULL /* references */,
         imf_subject /* subject */,
+        NULL /* received */,
         NULL /* comments */,
         NULL /* keywords */,
         NULL /* optional field */);
@@ -1156,6 +1183,41 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
       goto free_field;
   }
 
+  if (received != NULL) {
+    imf_received = mailimf_received_new(received);
+    if (imf_received == NULL)
+      goto free;
+    field = mailimf_field_new(MAILIMF_FIELD_RECEIVED,
+                              NULL /* return-path */,
+                              NULL /* resent date */,
+                              NULL /* resent from */,
+                              NULL /* resent sender */,
+                              NULL /* resent to */,
+                              NULL /* resent cc */,
+                              NULL /* resent bcc */,
+                              NULL /* resent msg id */,
+                              NULL /* date */,
+                              NULL /* from */,
+                              NULL /* sender */,
+                              NULL /* reply-to */,
+                              NULL /* to */,
+                              NULL /* cc */,
+                              NULL /* bcc */,
+                              NULL /* message id */,
+                              NULL /* in reply to */,
+                              NULL /* references */,
+                              NULL /* subject */,
+                              imf_received /* received */,
+                              NULL /* comments */,
+                              NULL /* keywords */,
+                              NULL /* optional field */);
+    if (field == NULL)
+      goto free;
+    r =  mailimf_fields_add(fields, field);
+    if (r != MAILIMF_NO_ERROR)
+      goto free_field;
+  }
+  
   return MAILIMF_NO_ERROR;
 
  free_field:
@@ -1174,7 +1236,8 @@ int mailimf_fields_add_data(struct mailimf_fields * fields,
 		     imf_msg_id,
 		     imf_in_reply_to,
 		     imf_references,
-		     imf_subject);
+		     imf_subject,
+         imf_received);
 
   return MAILIMF_ERROR_MEMORY;
 }
@@ -1190,7 +1253,8 @@ mailimf_fields_new_with_data_all(struct mailimf_date_time * date,
 				 char * message_id,
 				 clist * in_reply_to,
 				 clist * references,
-				 char * subject)
+				 char * subject,
+         char * received)
 {
   struct mailimf_fields * fields;
   int r;
@@ -1210,7 +1274,8 @@ mailimf_fields_new_with_data_all(struct mailimf_date_time * date,
 			      message_id,
 			      in_reply_to,
 			      references,
-			      subject);
+			      subject,
+            received);
   if (r != MAILIMF_NO_ERROR)
     goto free;
 
@@ -1231,7 +1296,8 @@ mailimf_fields_new_with_data(struct mailimf_mailbox_list * from,
 			     struct mailimf_address_list * bcc,
 			     clist * in_reply_to,
 			     clist * references,
-			     char * subject)
+			     char * subject,
+           char * received)
 {
   struct mailimf_date_time * date;
   char * msg_id;
@@ -1250,7 +1316,8 @@ mailimf_fields_new_with_data(struct mailimf_mailbox_list * from,
 					    to, cc, bcc,
 					    msg_id,
 					    in_reply_to, references,
-					    subject);
+					    subject,
+              received);
   if (fields == NULL)
     goto free_msg_id;
 
@@ -1434,6 +1501,11 @@ void mailimf_single_fields_init(struct mailimf_single_fields * single_fields,
         single_fields->fld_subject = field->fld_data.fld_subject;
       cur = clist_next(cur);
       break;
+    case MAILIMF_FIELD_RECEIVED:
+      if (single_fields->fld_received == NULL)
+        single_fields->fld_received = field->fld_data.fld_received;
+      cur = clist_next(cur);
+      break;
     case MAILIMF_FIELD_COMMENTS:
       if (single_fields->fld_comments == NULL)
         single_fields->fld_comments = field->fld_data.fld_comments;
@@ -1486,7 +1558,7 @@ struct mailimf_field * mailimf_field_new_custom(char * name, char * value)
 
   field = mailimf_field_new(MAILIMF_FIELD_OPTIONAL_FIELD,
       NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-      NULL, NULL, NULL, NULL,
+      NULL, NULL, NULL, NULL, NULL,
       NULL, NULL, NULL, NULL,
       NULL, NULL, NULL, NULL,
       NULL, NULL, opt_field);

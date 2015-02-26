@@ -109,6 +109,11 @@ mailimap_sort_key_new_subject(int is_reverse) {
 }
 
 struct mailimap_sort_key *
+mailimap_sort_key_new_received(int is_reverse) {
+  return mailimap_sort_key_new(MAILIMAP_SORT_KEY_RECEIVED, is_reverse, NULL);
+}
+
+struct mailimap_sort_key *
 mailimap_sort_key_new_to(int is_reverse) {
   return mailimap_sort_key_new(MAILIMAP_SORT_KEY_TO, is_reverse, NULL);
 }

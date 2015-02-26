@@ -2510,15 +2510,17 @@ int mailimap_parse_response(mailimap * session,
                                              session->imap_progress_context,
                                              session->imap_msg_att_handler,
                                              session->imap_msg_att_handler_context);
+    if (r != MAILIMAP_NO_ERROR)
+      return r;
   }
   else {
     r = mailimap_response_parse(session->imap_stream,
                                 session->imap_stream_buffer,
                                 &indx, &response,
                                 session->imap_progr_rate, session->imap_progr_fun);
+    if (r != MAILIMAP_NO_ERROR)
+      return r;
   }
-  if (r != MAILIMAP_NO_ERROR)
-    return r;
 
 #if 0
   mailimap_response_print(response);

@@ -84,6 +84,9 @@ static int mailimf_references_write_driver(int (* do_write)(void *, const char *
 static int mailimf_subject_write_driver(int (* do_write)(void *, const char *, size_t), void * data, int * col,
 				 struct mailimf_subject * subject);
 
+static int mailimf_received_write_driver(int (* do_write)(void *, const char *, size_t), void * data, int * col,
+                                        struct mailimf_received * received);
+
 static int mailimf_address_write_driver(int (* do_write)(void *, const char *, size_t), void * data, int * col,
 				 struct mailimf_address * addr);
 static int mailimf_group_write_driver(int (* do_write)(void *, const char *, size_t), void * data, int * col,
@@ -854,6 +857,9 @@ int mailimf_field_write_driver(int (* do_write)(void *, const char *, size_t), v
   case MAILIMF_FIELD_SUBJECT:
     r = mailimf_subject_write_driver(do_write, data, col, field->fld_data.fld_subject);
     break;
+  case MAILIMF_FIELD_RECEIVED:
+    r = mailimf_received_write_driver(do_write, data, col, field->fld_data.fld_received);
+    break;
   case MAILIMF_FIELD_COMMENTS:
     r = mailimf_comments_write_driver(do_write, data, col, field->fld_data.fld_comments);
     break;
@@ -1268,6 +1274,30 @@ static int mailimf_subject_write_driver(int (* do_write)(void *, const char *, s
   * col = 0;
 #endif
 
+  return MAILIMF_NO_ERROR;
+}
+
+static int mailimf_received_write_driver(int (* do_write)(void *, const char *, size_t), void * data, int * col,
+                                        struct mailimf_received * received)
+{
+  int r;
+  
+  r = mailimf_string_write_driver(do_write, data, col, "Received: ", 9);
+  if (r != MAILIMF_NO_ERROR)
+    return r;
+  
+  r = mailimf_header_string_write_driver(do_write, data, col,
+                                         received->rcd_value, strlen(received->rcd_value));
+  if (r != MAILIMF_NO_ERROR)
+    return r;
+  
+  r = mailimf_string_write_driver(do_write, data, col, "\r\n", 2);
+  if (r != MAILIMF_NO_ERROR)
+    return r;
+#if 0
+  * col = 0;
+#endif
+  
   return MAILIMF_NO_ERROR;
 }
 

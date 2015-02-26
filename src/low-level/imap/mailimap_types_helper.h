@@ -527,6 +527,9 @@ mailimap_search_key_new_since(struct mailimap_date * sk_since);
 struct mailimap_search_key *
 mailimap_search_key_new_subject(char * sk_subject);
 
+struct mailimap_search_key *
+mailimap_search_key_new_received(char * sk_received);
+
 /*
   this function creates a condition structure to match messages with
   message text part
@@ -689,6 +692,9 @@ mailimap_sort_key_new_size(int is_reverse);
 struct mailimap_sort_key *
 mailimap_sort_key_new_subject(int is_reverse);
 
+struct mailimap_sort_key *
+mailimap_sort_key_new_received(int is_reverse);
+  
 struct mailimap_sort_key *
 mailimap_sort_key_new_to(int is_reverse);
 

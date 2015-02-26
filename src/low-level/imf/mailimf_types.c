@@ -337,6 +337,7 @@ mailimf_field_new(int fld_type,
     struct mailimf_in_reply_to * fld_in_reply_to,
     struct mailimf_references * fld_references,
     struct mailimf_subject * fld_subject,
+    struct mailimf_received * fld_received,
     struct mailimf_comments * fld_comments,
     struct mailimf_keywords * fld_keywords,
     struct mailimf_optional_field * fld_optional_field)
@@ -405,6 +406,9 @@ mailimf_field_new(int fld_type,
     break;
   case MAILIMF_FIELD_SUBJECT:
     field->fld_data.fld_subject = fld_subject;
+    break;
+  case MAILIMF_FIELD_RECEIVED:
+    field->fld_data.fld_received = fld_received;
     break;
   case MAILIMF_FIELD_COMMENTS:
     field->fld_data.fld_comments = fld_comments;
@@ -480,6 +484,9 @@ void mailimf_field_free(struct mailimf_field * field)
     break;
   case MAILIMF_FIELD_SUBJECT:
     mailimf_subject_free(field->fld_data.fld_subject);
+    break;
+  case MAILIMF_FIELD_RECEIVED:
+    mailimf_received_free(field->fld_data.fld_received);
     break;
   case MAILIMF_FIELD_COMMENTS:
     mailimf_comments_free(field->fld_data.fld_comments);
@@ -785,10 +792,31 @@ struct mailimf_subject * mailimf_subject_new(char * sbj_value)
 }
 
 LIBETPAN_EXPORT
+struct mailimf_received * mailimf_received_new(char * rcd_value)
+{
+  struct mailimf_received * received;
+  
+  received = malloc(sizeof(* received));
+  if (received == NULL)
+    return NULL;
+  
+  received->rcd_value = rcd_value;
+  
+  return received;
+}
+
+LIBETPAN_EXPORT
 void mailimf_subject_free(struct mailimf_subject * subject)
 {
   mailimf_unstructured_free(subject->sbj_value);
   free(subject);
+}
+
+LIBETPAN_EXPORT
+void mailimf_received_free(struct mailimf_received * received)
+{
+  mailimf_unstructured_free(received->rcd_value);
+  free(received);
 }
 
 LIBETPAN_EXPORT

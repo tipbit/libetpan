@@ -1015,7 +1015,7 @@ static int mailimap_digit_send(mailstream * fd, int digit)
 
 
 /*
-   envelope        = "(" env-date SP env-subject SP env-from SP env-sender SP
+   envelope        = "(" env-date SP env-subject SP env-received SP env-from SP env-sender SP
                      env-reply-to SP env-to SP env-cc SP env-bcc SP
                      env-in-reply-to SP env-message-id ")"
 
@@ -1037,6 +1037,8 @@ static int mailimap_digit_send(mailstream * fd, int digit)
 
    env-subject     = nstring
 
+   env-received    = nstring
+ 
    env-to          = "(" 1*address ")" / nil
 */
 
@@ -1841,7 +1843,7 @@ int mailimap_rename_send(mailstream * fd, const char * mb,
                      "CC" SP astring / "DELETED" / "FLAGGED" /
                      "FROM" SP astring / "KEYWORD" SP flag-keyword / "NEW" /
                      "OLD" / "ON" SP date / "RECENT" / "SEEN" /
-                     "SINCE" SP date / "SUBJECT" SP astring /
+                     "SINCE" SP date / "SUBJECT" SP astring / "RECEIVED" SP astring /
                      "TEXT" SP astring / "TO" SP astring /
                      "UNANSWERED" / "UNDELETED" / "UNFLAGGED" /
                      "UNKEYWORD" SP flag-keyword / "UNSEEN" /
@@ -1915,6 +1917,9 @@ static int mailimap_search_key_need_to_send_charset(struct mailimap_search_key *
   case MAILIMAP_SEARCH_KEY_SUBJECT:
     return 1;
 
+  case MAILIMAP_SEARCH_KEY_RECEIVED:
+    return 0;
+      
   case MAILIMAP_SEARCH_KEY_TEXT:
     return 1;
 
@@ -2117,7 +2122,7 @@ mailimap_uid_search_send(mailstream * fd, const char * charset,
                      "CC" SP astring / "DELETED" / "FLAGGED" /
                      "FROM" SP astring / "KEYWORD" SP flag-keyword / "NEW" /
                      "OLD" / "ON" SP date / "RECENT" / "SEEN" /
-                     "SINCE" SP date / "SUBJECT" SP astring /
+                     "SINCE" SP date / "SUBJECT" SP astring / "RECEIVED" SP astring /
                      "TEXT" SP astring / "TO" SP astring /
                      "UNANSWERED" / "UNDELETED" / "UNFLAGGED" /
                      "UNKEYWORD" SP flag-keyword / "UNSEEN" /
@@ -2271,6 +2276,18 @@ int mailimap_search_key_send(mailstream * fd,
       return r;
     return MAILIMAP_NO_ERROR;
 
+  case MAILIMAP_SEARCH_KEY_RECEIVED:
+    r = mailimap_token_send(fd, "RECEIVED");
+    if (r != MAILIMAP_NO_ERROR)
+      return r;
+    r = mailimap_space_send(fd);
+    if (r != MAILIMAP_NO_ERROR)
+      return r;
+    r = mailimap_astring_send(fd, key->sk_data.sk_received);
+    if (r != MAILIMAP_NO_ERROR)
+      return r;
+    return MAILIMAP_NO_ERROR;
+    
   case MAILIMAP_SEARCH_KEY_TEXT:
     r = mailimap_token_send(fd, "TEXT");
     if (r != MAILIMAP_NO_ERROR)

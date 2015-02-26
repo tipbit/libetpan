@@ -1996,7 +1996,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, orig, NULL,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_orig_date_free(orig);
 	res = MAIL_ERROR_MEMORY;
@@ -2034,7 +2034,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-        NULL, subject_field, NULL, NULL, NULL);
+        NULL, subject_field, NULL, NULL, NULL, NULL);
     if (field == NULL) {
       mailimf_subject_free(subject_field);
       res = MAIL_ERROR_MEMORY;
@@ -2049,6 +2049,43 @@ int imap_env_to_fields(struct mailimap_envelope * env,
     }
   }
 
+  if (env->env_received != NULL) {
+    char * received;
+    struct mailimf_received * received_field;
+    
+    received = strdup(env->env_received);
+    if (received == NULL) {
+      res = MAIL_ERROR_MEMORY;
+      goto free_list;
+    }
+    
+    
+    received_field = mailimf_received_new(received);
+    if (received_field == NULL) {
+      free(received);
+      res = MAIL_ERROR_MEMORY;
+      goto free_list;
+    }
+    
+    field = mailimf_field_new(MAILIMF_FIELD_RECEIVED,
+                              NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+                              NULL, NULL, NULL,
+                              NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+                              NULL, NULL, received_field, NULL, NULL, NULL);
+    if (field == NULL) {
+      mailimf_received_free(received_field);
+      res = MAIL_ERROR_MEMORY;
+      goto free_list;
+    }
+    
+    r = clist_append(list, field);
+    if (r != 0) {
+      mailimf_field_free(field);
+      res = MAIL_ERROR_MEMORY;
+      goto free_list;
+    }
+  }
+  
   if (env->env_from != NULL) {
     if (env->env_from->frm_list != NULL) {
       struct mailimf_mailbox_list * mb_list;
@@ -2072,7 +2109,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, from,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_from_free(from);
 	res = MAIL_ERROR_MEMORY;
@@ -2111,7 +2148,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, NULL,
           sender, NULL, NULL, NULL, NULL, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_sender_free(sender);
 	res = MAIL_ERROR_MEMORY;
@@ -2151,7 +2188,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, NULL,
           NULL, reply_to, NULL, NULL, NULL, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_reply_to_free(reply_to);
 	res = MAIL_ERROR_MEMORY;
@@ -2190,7 +2227,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, NULL,
           NULL, NULL, to, NULL, NULL, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_to_free(to);
 	res = MAIL_ERROR_MEMORY;
@@ -2229,7 +2266,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, NULL,
           NULL, NULL, NULL, cc, NULL, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_cc_free(cc);
 	res = MAIL_ERROR_MEMORY;
@@ -2269,7 +2306,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, NULL,
           NULL, NULL, NULL, NULL, bcc, NULL, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_bcc_free(bcc);
 	res = MAIL_ERROR_MEMORY;
@@ -2309,7 +2346,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL,
           NULL, NULL, NULL, NULL, NULL, NULL,
           in_reply_to,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_in_reply_to_free(in_reply_to);
 	res = MAIL_ERROR_MEMORY;
@@ -2355,7 +2392,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL, NULL, NULL, NULL, NULL,
           NULL, NULL, NULL,
           NULL, NULL, NULL, NULL, NULL, msg_id, NULL,
-          NULL, NULL, NULL, NULL, NULL);
+          NULL, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_message_id_free(msg_id);
 	res = MAIL_ERROR_MEMORY;
@@ -2393,7 +2430,7 @@ int imap_env_to_fields(struct mailimap_envelope * env,
           NULL, NULL, NULL,
           NULL, NULL, NULL, NULL, NULL, NULL,
           NULL,
-          references, NULL, NULL, NULL, NULL);
+          references, NULL, NULL, NULL, NULL, NULL);
       if (field == NULL) {
 	mailimf_references_free(references);
 	res = MAIL_ERROR_MEMORY;
@@ -2637,6 +2674,7 @@ int mail_search_to_imap_search(struct mail_search_key * key,
   struct mailimap_date * on;
   struct mailimap_date * since;
   char * subject;
+  char * received;
   char * text;
   char * to;
   char * header_name;
@@ -2660,6 +2698,7 @@ int mail_search_to_imap_search(struct mail_search_key * key,
   on = NULL;
   since = NULL;
   subject = NULL;
+  received = NULL;
   text = NULL;
   to = NULL;
   header_name = NULL;
@@ -2776,6 +2815,15 @@ int mail_search_to_imap_search(struct mail_search_key * key,
     }
     break;
 
+    case MAIL_SEARCH_KEY_RECEIVED:
+      type = MAILIMAP_SEARCH_KEY_RECEIVED;
+      received = strdup(key->sk_received);
+      if (received == NULL) {
+        res = MAIL_ERROR_MEMORY;
+        goto err;
+      }
+      break;
+      
   case MAIL_SEARCH_KEY_TEXT:
     type = MAILIMAP_SEARCH_KEY_TEXT;
     text = strdup(key->sk_text);
@@ -2898,7 +2946,7 @@ int mail_search_to_imap_search(struct mail_search_key * key,
   }
 
   imap_key = mailimap_search_key_new(type, bcc, before, body, cc, from,
-				     NULL, on, since, subject, text,
+				     NULL, on, since, subject, received, text,
 				     to, NULL, header_name,
 				     header_value, larger, not, or1, or2,
 				     NULL, NULL, NULL, smaller, NULL,
@@ -2927,6 +2975,8 @@ int mail_search_to_imap_search(struct mail_search_key * key,
     mailimap_date_free(on);
   if (since != NULL)
     mailimap_date_free(since);
+  if (received != NULL)
+    free(received);
   if (subject != NULL)
     free(subject);
   if (text != NULL)
