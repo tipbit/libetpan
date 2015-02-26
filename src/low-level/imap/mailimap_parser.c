@@ -4954,7 +4954,7 @@ static int mailimap_envelope_parse(mailstream * fd, MMAPString * buffer,
  from:
   mailimap_env_from_free(from);
  subject:
-  mailimap_env_subject_free(date);
+  mailimap_env_subject_free(subject);
  date:
   mailimap_env_date_free(date);
  err:
