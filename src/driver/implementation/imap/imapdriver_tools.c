@@ -1409,11 +1409,9 @@ imap_body_type_mpart_to_body(struct mailimap_body_type_mpart *
   clist * list;
   int r;
   int res;
-  uint32_t mime_size;
 
   if (type_mpart->bd_ext_mpart == NULL) {
     mime_fields = mailmime_fields_new_empty();
-    mime_size = 0;
     r = MAIL_NO_ERROR;
   }
   else {
@@ -1421,7 +1419,7 @@ imap_body_type_mpart_to_body(struct mailimap_body_type_mpart *
         type_mpart->bd_ext_mpart->bd_disposition,
         type_mpart->bd_ext_mpart->bd_language,
         type_mpart->bd_ext_mpart->bd_loc,
-        &mime_fields, &mime_size);
+        &mime_fields, NULL);
   }
   if (r != MAIL_NO_ERROR) {
     res = r;
@@ -1488,7 +1486,7 @@ imap_body_type_mpart_to_body(struct mailimap_body_type_mpart *
   }
 
   body = mailmime_new(MAILMIME_MULTIPLE, NULL,
-      mime_size, mime_fields, content_type,
+      0, mime_fields, content_type,
       NULL, NULL, NULL, list, NULL, NULL);
 
   if (body == NULL) {
