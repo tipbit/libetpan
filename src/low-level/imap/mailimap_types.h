@@ -3201,6 +3201,7 @@ struct mailimap {
   struct mailimap_connection_info * imap_connection_info;
   struct mailimap_selection_info * imap_selection_info;
   struct mailimap_response_info * imap_response_info;
+  struct mailimap_greeting * imap_greeting;
   
   struct {
     void * sasl_conn;

@@ -557,7 +557,7 @@ int mailimap_connect(mailimap * session, mailstream * s)
   
   auth_type = greeting->gr_data.gr_auth->rsp_type;
 
-  mailimap_greeting_free(greeting);
+  session->imap_greeting = greeting;
 
   switch (auth_type) {
   case MAILIMAP_RESP_COND_AUTH_PREAUTH:
@@ -2647,6 +2647,7 @@ mailimap * mailimap_new(size_t imap_progr_rate,
   f->imap_selection_info = NULL;
   f->imap_response_info = NULL;
   f->imap_connection_info = NULL;
+  f->imap_greeting = NULL;
 
 #ifdef USE_SASL
   f->imap_sasl.sasl_conn = NULL;
@@ -2699,6 +2700,8 @@ void mailimap_free(mailimap * session)
     mailimap_selection_info_free(session->imap_selection_info);
   if (session->imap_connection_info)
     mailimap_connection_info_free(session->imap_connection_info);
+  if (session->imap_greeting)
+    mailimap_greeting_free(session->imap_greeting);
 
   free(session);
 }
