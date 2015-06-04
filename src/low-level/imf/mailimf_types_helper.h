@@ -378,6 +378,19 @@ void mailimf_single_fields_free(struct mailimf_single_fields *
                                 single_fields);
 
 /*
+ Free each of the fields held by the given structure (but not the struct itself).
+
+ You don't need this if you initialized using mailimf_single_fields_init because
+ the field contents are owned by the struct mailimf_fields that you initially provided.
+
+ You need to call this if you allocated these fields otherwise and they aren't
+ owned by some other struct.
+ */
+LIBETPAN_EXPORT
+void mailimf_single_fields_free_fields(struct mailimf_single_fields *
+                                       single_fields);
+
+/*
   mailimf_field_new_custom creates a new field of type optional
 
   @param name should be allocated with malloc()

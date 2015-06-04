@@ -1475,6 +1475,53 @@ void mailimf_single_fields_free(struct mailimf_single_fields *
   free(single_fields);
 }
 
+void mailimf_single_fields_free_fields(struct mailimf_single_fields *
+                                       single_fields)
+{
+  if (single_fields == NULL) {
+    return;
+  }
+  if (single_fields->fld_bcc != NULL) {
+    mailimf_bcc_free(single_fields->fld_bcc);
+  }
+  if (single_fields->fld_cc != NULL) {
+    mailimf_cc_free(single_fields->fld_cc);
+  }
+  if (single_fields->fld_comments != NULL) {
+    mailimf_comments_free(single_fields->fld_comments);
+  }
+  if (single_fields->fld_from != NULL) {
+    mailimf_from_free(single_fields->fld_from);
+  }
+  if (single_fields->fld_in_reply_to != NULL) {
+    mailimf_in_reply_to_free(single_fields->fld_in_reply_to);
+  }
+  if (single_fields->fld_keywords != NULL) {
+    mailimf_keywords_free(single_fields->fld_keywords);
+  }
+  if (single_fields->fld_message_id != NULL) {
+    mailimf_message_id_free(single_fields->fld_message_id);
+  }
+  if (single_fields->fld_orig_date != NULL) {
+    mailimf_orig_date_free(single_fields->fld_orig_date);
+  }
+  if (single_fields->fld_references != NULL) {
+    mailimf_references_free(single_fields->fld_references);
+  }
+  if (single_fields->fld_reply_to != NULL) {
+    mailimf_reply_to_free(single_fields->fld_reply_to);
+  }
+  if (single_fields->fld_sender != NULL) {
+    mailimf_sender_free(single_fields->fld_sender);
+  }
+  if (single_fields->fld_subject != NULL) {
+    mailimf_subject_free(single_fields->fld_subject);
+  }
+  if (single_fields->fld_to != NULL) {
+    mailimf_to_free(single_fields->fld_to);
+  }
+}
+
 struct mailimf_field * mailimf_field_new_custom(char * name, char * value)
 {
   struct mailimf_optional_field * opt_field;
