@@ -168,7 +168,7 @@ static int mailimap_id_params_list_parse(mailstream * fd,
     }
     
     * indx = cur_token;
-    * result = NULL;
+    * result = params_list;
     return MAILIMAP_NO_ERROR;
   }
   
