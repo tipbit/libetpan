@@ -1598,8 +1598,11 @@ static int get_cert_from_sig(struct mailprivacy * privacy,
   snprintf(command, sizeof(command),
       "openssl pkcs7 -inform DER -in '%s' -out '%s' -print_certs 2>/dev/null",
       quoted_signature_filename, quoted_store_cert_filename);
-  
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
   r = system(command);
+#pragma clang diagnostic pop
   if (WEXITSTATUS(r) != 0) {
     res = MAIL_ERROR_COMMAND;
     goto unlink_signature;

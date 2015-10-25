@@ -1543,8 +1543,11 @@ int mailprivacy_spawn_and_wait(char * command, char * passphrase,
       dup2(fd_err, 2);
       close(fd_err);
       
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
       status = system(command);
-      
+#pragma clang diagnostic pop
+
       exit(WEXITSTATUS(status));
     }
     break;
