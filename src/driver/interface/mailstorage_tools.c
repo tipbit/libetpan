@@ -281,7 +281,7 @@ int mailstorage_generic_connect_with_local_address(mailsession_driver * driver,
     if (mailstream_cfstream_enabled) {
       int ssl_level = MAILSTREAM_CFSTREAM_SSL_LEVEL_NEGOCIATED_SSL;
       mailstream_cfstream_set_ssl_level(stream, ssl_level);
-      mailstream_cfstream_set_ssl_verification_mask(stream, MAILSTREAM_CFSTREAM_SSL_NO_VERIFICATION);
+      mailstream_cfstream_set_ssl_verification_mask(stream, MAILSTREAM_CFSTREAM_SSL_DISABLE_VALIDATES_CERTIFICATE_CHAIN);
       r = mailstream_cfstream_set_ssl_enabled(stream, 1);
       if (r < 0) {
         mailstream_close(stream);

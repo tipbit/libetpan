@@ -963,15 +963,6 @@ int mailstream_cfstream_set_ssl_enabled(mailstream * s, int ssl_enabled)
         break;
     }
     
-    if ((cfstream_data->ssl_certificate_verification_mask & MAILSTREAM_CFSTREAM_SSL_ALLOWS_EXPIRED_CERTIFICATES) != 0) {
-      CFDictionarySetValue(settings, kCFStreamSSLAllowsExpiredCertificates, kCFBooleanTrue);
-    }
-    if ((cfstream_data->ssl_certificate_verification_mask & MAILSTREAM_CFSTREAM_SSL_ALLOWS_EXPIRED_ROOTS) != 0) {
-      CFDictionarySetValue(settings, kCFStreamSSLAllowsExpiredRoots, kCFBooleanTrue);
-    }
-    if ((cfstream_data->ssl_certificate_verification_mask & MAILSTREAM_CFSTREAM_SSL_ALLOWS_ANY_ROOT) != 0) {
-      CFDictionarySetValue(settings, kCFStreamSSLAllowsAnyRoot, kCFBooleanTrue);
-    }
     if ((cfstream_data->ssl_certificate_verification_mask & MAILSTREAM_CFSTREAM_SSL_DISABLE_VALIDATES_CERTIFICATE_CHAIN) != 0) {
       CFDictionarySetValue(settings, kCFStreamSSLValidatesCertificateChain, kCFBooleanFalse);
     }

@@ -172,7 +172,7 @@ static int mailimap_cfsocket_starttls(mailimap * f)
       return r;
   }
   
-  mailstream_cfstream_set_ssl_verification_mask(f->imap_stream, MAILSTREAM_CFSTREAM_SSL_NO_VERIFICATION);
+  mailstream_cfstream_set_ssl_verification_mask(f->imap_stream, MAILSTREAM_CFSTREAM_SSL_DISABLE_VALIDATES_CERTIFICATE_CHAIN);
   r = mailstream_cfstream_set_ssl_enabled(f->imap_stream, 1);
   if (r < 0) {
     return MAILIMAP_ERROR_SSL;

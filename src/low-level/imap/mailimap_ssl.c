@@ -125,7 +125,7 @@ static int mailimap_cfssl_connect_voip_ssl_level(mailimap * f, const char * serv
     return MAILIMAP_ERROR_CONNECTION_REFUSED;
   }
   mailstream_cfstream_set_ssl_level(stream, ssl_level);
-  mailstream_cfstream_set_ssl_verification_mask(stream, MAILSTREAM_CFSTREAM_SSL_NO_VERIFICATION);
+  mailstream_cfstream_set_ssl_verification_mask(stream, MAILSTREAM_CFSTREAM_SSL_DISABLE_VALIDATES_CERTIFICATE_CHAIN);
   r = mailstream_cfstream_set_ssl_enabled(stream, 1);
   if (r < 0) {
     mailstream_close(stream);
